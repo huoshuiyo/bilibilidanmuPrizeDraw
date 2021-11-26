@@ -54,10 +54,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BeginPanel.cs" />
-    <Compile Include="Assets\Scripts\ChangeOrderPanel.cs" />
-    <Compile Include="Assets\Scripts\ChouJiangPanel.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\ChangeOrderPanel.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\ChouJiangPanel.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\CountPanel.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\MingDanController.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\Pool.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\UserInPool.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\UserInWinner.cs" />
     <Compile Include="Assets\Scripts\Content.cs" />
-    <Compile Include="Assets\Scripts\CountPanel.cs" />
     <Compile Include="Assets\Scripts\Danmu.cs" />
     <Compile Include="Assets\Scripts\DanmuSocket\BigEndianBitConverter.cs" />
     <Compile Include="Assets\Scripts\DanmuSocket\DanmakuLoader.cs" />

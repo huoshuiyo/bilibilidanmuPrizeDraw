@@ -23,7 +23,6 @@ public class Danmu : MonoBehaviour
 
     HttpRequestHelp h = new HttpRequestHelp();
 
-    public static List<string> mingDan = new List<string>();
     public static bool isBegin = false;
     public static string order = "";
 
@@ -72,7 +71,7 @@ public class Danmu : MonoBehaviour
             if (content == order)
             {
                 int checkID = 0;
-                foreach (var ID in mingDan) 
+                foreach (var ID in MingDanController.controller.mingDan) 
                 {
                     if (username == ID)
                     {
@@ -82,7 +81,7 @@ public class Danmu : MonoBehaviour
                 }
                 if (checkID == 0)
                 {
-                    mingDan.Add(username);
+                    MingDanController.controller.AddMingDan(username);
                     GameObject chouJiangObj = Instantiate(userItem);
                     chouJiangObj.GetComponent<Content>().imgAddress = imgAddress;
                     chouJiangObj.GetComponent<Content>().username = username;
