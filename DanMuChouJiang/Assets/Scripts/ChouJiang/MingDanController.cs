@@ -30,7 +30,11 @@ public class MingDanController : MonoBehaviour
 
     public void ResetJiangChi()
     {
-        jiangChi = mingDan;
+        jiangChi = new List<string>();
+        foreach (var item in mingDan)
+        {
+            jiangChi.Add(item);
+        }
     }
 
     public void RemoveJiangChi(string username)

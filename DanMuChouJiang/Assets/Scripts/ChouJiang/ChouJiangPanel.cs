@@ -27,7 +27,7 @@ public class ChouJiangPanel : MonoBehaviour
     //单抽
     public void ChouJiang()
     {
-        if (MingDanController.controller.jiangChi.Count == 0)
+        if (MingDanController.controller.jiangChi.Count <= 0)
         {
             return;
         }

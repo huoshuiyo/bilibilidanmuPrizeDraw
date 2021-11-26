@@ -46,7 +46,7 @@ public class CountPanel : MonoBehaviour
     public void OpenChouJiangPanel() 
     {
         chouJiangPanel.SetActive(true);
-        MingDanController.controller.jiangChi = MingDanController.controller.mingDan;
+        MingDanController.controller.ResetJiangChi();
         chouJiangPanel.GetComponent<ChouJiangPanel>().DeleteUserInWinner();
     }
 
