@@ -3,35 +3,22 @@
 #### 介绍
 B站弹幕抽奖
 
-#### 软件架构
-软件架构说明
+#### 软件说明
+本项目使用unity20194.32f1c1开发
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+打开build文件夹，即可直接使用打包好的软件
 
-#### 使用说明
+#### 基本功能
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  弹幕显示
+2.  弹幕口令抽奖
+3.  单抽，十连抽，自定义抽取
+4.  响指一声：去掉奖池里一半的人数（向上取整）
 
-#### 参与贡献
+#### BUG反馈
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+联系6101612@qq.com
 
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
