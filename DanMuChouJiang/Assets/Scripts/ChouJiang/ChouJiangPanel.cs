@@ -15,8 +15,12 @@ public class ChouJiangPanel : MonoBehaviour
 
     [Header("奖池")]
     public GameObject poolPanel;
-
     public Pool pool;
+
+    [Header("CSGORoll")]
+    public GameObject cSGORollPanel;
+
+ 
 
     [Header("名单预制物")]
     public GameObject userInWinner;
@@ -60,8 +64,6 @@ public class ChouJiangPanel : MonoBehaviour
         }
     }
 
-    #endregion
-
     //重置
     public void ResetPool()
     {
@@ -86,10 +88,19 @@ public class ChouJiangPanel : MonoBehaviour
         }
     }
 
+    #endregion
+
+
+
     public void OpenPoolPanel()
     {
         pool.CreateUserInPool();
         poolPanel.SetActive(true);
+    }
+
+    public void OpenCSGORollPanel()
+    {
+        cSGORollPanel.SetActive(true);
     }
 
     public void CloseChoujiangPanel()

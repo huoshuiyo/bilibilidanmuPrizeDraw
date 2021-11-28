@@ -57,6 +57,8 @@
     <Compile Include="Assets\Scripts\ChouJiang\ChangeOrderPanel.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\ChouJiangPanel.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\CountPanel.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\CsgoRoll\CsgoItem.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\CsgoRoll\CsgoRoll.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\MingDanController.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\Pool.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\UserInPool.cs" />
@@ -629,6 +631,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>

@@ -6,6 +6,8 @@ ScriptsOnlyBuild:
     - ChouJiangPanel
     - Content
     - CountPanel
+    - CsgoItem
+    - CsgoRoll
     - Danmu
     - MainPanel
     - MingDanController
@@ -17,10 +19,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -56,8 +56,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 89
-      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -65,21 +63,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11330}
     - Class: 114
-      Script: {instanceID: 11358}
+      Script: {instanceID: 11360}
     - Class: 114
-      Script: {instanceID: 11570}
+      Script: {instanceID: 11580}
     - Class: 114
-      Script: {instanceID: 12106}
+      Script: {instanceID: 12128}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12702}
     - Class: 114
-      Script: {instanceID: 12938}
+      Script: {instanceID: 12976}
     - Class: 114
-      Script: {instanceID: 13312}
+      Script: {instanceID: 13364}
     - Class: 114
-      Script: {instanceID: 13336}
+      Script: {instanceID: 13388}
     - Class: 114
-      Script: {instanceID: 13814}
+      Script: {instanceID: 13876}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -120,51 +118,55 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11328}
-    - Class: 114
       Script: {instanceID: 11330}
     - Class: 114
-      Script: {instanceID: 11358}
+      Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11380}
+      Script: {instanceID: 11360}
     - Class: 114
-      Script: {instanceID: 11512}
+      Script: {instanceID: 11384}
     - Class: 114
-      Script: {instanceID: 11570}
+      Script: {instanceID: 11520}
     - Class: 114
-      Script: {instanceID: 11574}
+      Script: {instanceID: 11580}
     - Class: 114
-      Script: {instanceID: 11690}
+      Script: {instanceID: 11584}
     - Class: 114
-      Script: {instanceID: 11744}
+      Script: {instanceID: 11700}
     - Class: 114
-      Script: {instanceID: 11758}
+      Script: {instanceID: 11754}
     - Class: 114
-      Script: {instanceID: 12106}
+      Script: {instanceID: 11770}
     - Class: 114
-      Script: {instanceID: 12270}
+      Script: {instanceID: 12128}
     - Class: 114
-      Script: {instanceID: 12308}
+      Script: {instanceID: 12298}
     - Class: 114
-      Script: {instanceID: 12322}
+      Script: {instanceID: 12336}
     - Class: 114
-      Script: {instanceID: 12374}
+      Script: {instanceID: 12350}
     - Class: 114
-      Script: {instanceID: 12580}
+      Script: {instanceID: 12402}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12612}
     - Class: 114
-      Script: {instanceID: 12938}
+      Script: {instanceID: 12702}
     - Class: 114
-      Script: {instanceID: 13076}
+      Script: {instanceID: 12976}
     - Class: 114
-      Script: {instanceID: 13336}
+      Script: {instanceID: 13120}
     - Class: 114
-      Script: {instanceID: 13584}
+      Script: {instanceID: 13388}
     - Class: 114
-      Script: {instanceID: 13736}
+      Script: {instanceID: 13646}
     - Class: 114
-      Script: {instanceID: 13814}
+      Script: {instanceID: 13798}
+    - Class: 114
+      Script: {instanceID: 13876}
+    - Class: 114
+      Script: {instanceID: 20312}
+    - Class: 114
+      Script: {instanceID: 43516}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -188,16 +190,16 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: aba7b2852ef61d175dd9602e7723d5e5
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Mask
-  - hash:
-      serializedVersion: 2
       Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: aba7b2852ef61d175dd9602e7723d5e5
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Mask
   - hash:
       serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
@@ -410,7 +412,7 @@ ScriptsOnlyBuild:
     className: CountPanel
   - hash:
       serializedVersion: 2
-      Hash: 325d1a0dffe9ecb40bd0776263a6f4ac
+      Hash: c6f14eb18c6b00de995866f241fb43fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChouJiangPanel
@@ -678,8 +680,20 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 7a5531652883eeb0a6e6406fe3d8f537
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CsgoRoll
+  - hash:
+      serializedVersion: 2
+      Hash: 44accf75607fc16f873aabd722fe6e2c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CsgoItem
   platform: 19
   scenePathNames:
   - Assets/Scene/Begin.unity
   - Assets/Scene/Main.unity
-  playerPath: D:/KuaiSu/UnityProjects/Danmu/bilibilidanmuchoujiang/build/20211128/DanMuChouJiang.exe
+  playerPath: D:/KuaiSu/UnityProjects/Danmu/bilibilidanmuchoujiang/build/202111282/DanMuChouJiang.exe
