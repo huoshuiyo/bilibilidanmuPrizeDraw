@@ -270,6 +270,7 @@ namespace BiliDMLib
                 case 3: // (OpHeartbeatReply) 人气
                     {
                         var viewer = EndianBitConverter.BigEndian.ToUInt32(buffer, 0); //观众人数
+                        MingDanController.controller.SetRenQi(viewer.ToString());
                         UnityEngine.Debug.Log("接收到协议指令3 显示人数:" + viewer);
                         //ReceivedRoomCount?.Invoke(this, new ReceivedRoomCountArgs() { UserCount = viewer });
                         break;

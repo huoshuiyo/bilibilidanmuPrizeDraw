@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class ChouJiangPanel : MonoBehaviour
 {
     public Text countInPool;
-
+    public Text prizeText;
 
     public InputField ziDingYiChouJiang;
 
@@ -100,5 +100,6 @@ public class ChouJiangPanel : MonoBehaviour
     private void Update()
     {
         countInPool.text = "当前奖池还有" + MingDanController.controller.jiangChi.Count.ToString() + "人";
+        prizeText.text = "奖品：" + MingDanController.controller.prize;
     }
 }

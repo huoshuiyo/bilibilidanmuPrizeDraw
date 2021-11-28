@@ -5,18 +5,31 @@ using UnityEngine.UI;
 
 public class ChangeOrderPanel : MonoBehaviour
 {
-    public InputField order;
+    public InputField orderInput;
+    public InputField prizeInput;
+
     private void Start()
     {
         if (PlayerPrefs.HasKey("Order"))
         {
-            order.text = PlayerPrefs.GetString("Order");
+            orderInput.text = PlayerPrefs.GetString("Order");
+        }
+        if (PlayerPrefs.HasKey("Prize"))
+        {
+            prizeInput.text = PlayerPrefs.GetString("Prize");
         }
     }
     public void SetOrder() 
     {
-        Danmu.order = order.text;
-        PlayerPrefs.SetString("Order", order.text);
+        MingDanController.controller.order = orderInput.text;
+        PlayerPrefs.SetString("Order", orderInput.text);
+        SetPrize();
+    }
+
+    public void SetPrize()
+    {
+        MingDanController.controller.SetPrize(prizeInput.text);
+        PlayerPrefs.SetString("Prize", prizeInput.text);
         this.gameObject.SetActive(false);
     }
 }

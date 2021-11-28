@@ -24,16 +24,13 @@ public class Danmu : MonoBehaviour
     HttpRequestHelp h = new HttpRequestHelp();
 
     public static bool isBegin = false;
-    public static string order = "";
+    
 
     public Transform chouJiangCanYu;
 
     private async void Start()
     {
-        if (PlayerPrefs.HasKey("Order"))
-        {
-            order = PlayerPrefs.GetString("Order");
-        }
+
 
         imgdic = new Dictionary<int, string>();
         ld = new DanmakuLoader();
@@ -64,11 +61,11 @@ public class Danmu : MonoBehaviour
         danMuObj.GetComponent<Content>().content = content;
         danMuObj.GetComponent<Content>()._username.color = RandomColor();
         danMuObj.transform.SetParent(parent);
-        Destroy(danMuObj, 15f);
+        Destroy(danMuObj, 20f);
         if (isBegin)
         {
             //如果弹幕等于口令
-            if (content == order)
+            if (content == MingDanController.controller.order)
             {
                 int checkID = 0;
                 foreach (var ID in MingDanController.controller.mingDan) 

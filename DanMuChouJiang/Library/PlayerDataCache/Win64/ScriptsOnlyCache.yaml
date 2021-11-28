@@ -17,8 +17,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -53,6 +55,8 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -168,6 +172,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -308,7 +314,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 7e74716de72058f5a999fdd2538de6f2
+      Hash: c88545df6197d9167c441d35030ccd05
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MingDanController
@@ -398,13 +404,13 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 3b6f63015a407effd545d169763aaac5
+      Hash: 7682f6bf858924c4c7a0c2580906788a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CountPanel
   - hash:
       serializedVersion: 2
-      Hash: aa195265c72a29805c96901d03c47b46
+      Hash: 325d1a0dffe9ecb40bd0776263a6f4ac
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChouJiangPanel
@@ -440,7 +446,7 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: ca11e4cdcbf0208cbd1dafc63e734ea4
+      Hash: f598491f700854ceb5eb49134dc261fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainPanel
@@ -566,7 +572,7 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: 565f6d23db77d3a1bb1f81665c45b717
+      Hash: dfb91cf73992cbb73339f6314162adf0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ChangeOrderPanel
@@ -676,4 +682,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scene/Begin.unity
   - Assets/Scene/Main.unity
-  playerPath: D:/KuaiSu/UnityProjects/Danmu/bilibilidanmuchoujiang/DanMuChouJiang/build/20211127window1/DanMuChouJiang.exe
+  playerPath: D:/KuaiSu/UnityProjects/Danmu/bilibilidanmuchoujiang/build/20211128/DanMuChouJiang.exe
