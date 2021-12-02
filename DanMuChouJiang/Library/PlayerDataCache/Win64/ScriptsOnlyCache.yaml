@@ -69,15 +69,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12128}
     - Class: 114
-      Script: {instanceID: 12702}
+      Script: {instanceID: 12704}
     - Class: 114
-      Script: {instanceID: 12976}
+      Script: {instanceID: 12980}
     - Class: 114
-      Script: {instanceID: 13364}
+      Script: {instanceID: 13368}
     - Class: 114
-      Script: {instanceID: 13388}
+      Script: {instanceID: 13392}
     - Class: 114
-      Script: {instanceID: 13876}
+      Script: {instanceID: 13880}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -150,23 +150,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12612}
     - Class: 114
-      Script: {instanceID: 12702}
+      Script: {instanceID: 12614}
     - Class: 114
-      Script: {instanceID: 12976}
+      Script: {instanceID: 12704}
     - Class: 114
-      Script: {instanceID: 13120}
+      Script: {instanceID: 12840}
     - Class: 114
-      Script: {instanceID: 13388}
+      Script: {instanceID: 12980}
     - Class: 114
-      Script: {instanceID: 13646}
+      Script: {instanceID: 13124}
     - Class: 114
-      Script: {instanceID: 13798}
+      Script: {instanceID: 13392}
     - Class: 114
-      Script: {instanceID: 13876}
+      Script: {instanceID: 13650}
     - Class: 114
-      Script: {instanceID: 20312}
+      Script: {instanceID: 13802}
     - Class: 114
-      Script: {instanceID: 43516}
+      Script: {instanceID: 13880}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -448,6 +448,12 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
+      Hash: 7a5531652883eeb0a6e6406fe3d8f537
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CsgoRoll
+  - hash:
+      serializedVersion: 2
       Hash: f598491f700854ceb5eb49134dc261fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -470,6 +476,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 44accf75607fc16f873aabd722fe6e2c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CsgoItem
   - hash:
       serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
@@ -680,20 +692,8 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 7a5531652883eeb0a6e6406fe3d8f537
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CsgoRoll
-  - hash:
-      serializedVersion: 2
-      Hash: 44accf75607fc16f873aabd722fe6e2c
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CsgoItem
   platform: 19
   scenePathNames:
   - Assets/Scene/Begin.unity
   - Assets/Scene/Main.unity
-  playerPath: D:/KuaiSu/UnityProjects/Danmu/bilibilidanmuchoujiang/build/202111282/DanMuChouJiang.exe
+  playerPath: "D:/KuaiSu/UnityProjects/Danmu/bilibilidanmuchoujiang/build/20211202/B\u7AD9\u5F39\u5E55\u62BD\u5956.exe"
