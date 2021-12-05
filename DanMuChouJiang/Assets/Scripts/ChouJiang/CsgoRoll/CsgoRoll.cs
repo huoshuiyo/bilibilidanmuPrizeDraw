@@ -19,7 +19,7 @@ public class CsgoRoll : MonoBehaviour
 
     public GameObject parent;
 
-    public ChouJiangPanel chouJiangPanel;
+    public PrizeDrawPanel PrizeDrawPanel;
 
     public GameObject beginButton;
     public GameObject backButton;
@@ -47,7 +47,7 @@ public class CsgoRoll : MonoBehaviour
     {
         for (int i = 0; i < itemArray.Length; i++)
         {
-            string user = MingDanController.controller.jiangChi.OrderBy(u => Guid.NewGuid()).First();
+            string user = ListOfUserController.controller.ListOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
             itemArray[i].userName.text = user;
         }
     }
@@ -66,8 +66,8 @@ public class CsgoRoll : MonoBehaviour
             {
                 //如果还没有赢家
                 string winner = itemArray[(int)Math.Round(61 - (parentX / 150))].userName.text;
-                chouJiangPanel.CreateUserInWinner(winner);
-                MingDanController.controller.RemoveJiangChi(winner);
+                PrizeDrawPanel.CreateUserInWinner(winner);
+                ListOfUserController.controller.RemoveListOfPrizePool(winner);
                 isWin = true;
                 beginButton.SetActive(true);
                 backButton.SetActive(true);

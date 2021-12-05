@@ -1,6 +1,4 @@
-﻿using BiliDMLib;
-using DanmuHelper;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,101 +10,75 @@ using Newtonsoft.Json.Linq;
 
 public class Danmu : MonoBehaviour
 {
-    public static int roomID;
+    public Live live;
     public GameObject userItem;
 
     public Transform parent;
-    DanmakuLoader ld;
-
-
-    public Dictionary<int, string> imgdic;
-
-    HttpRequestHelp h = new HttpRequestHelp();
 
     public static bool isBegin = false;
-    
+    public Transform enterThePrizeDrawParent;
 
-    public Transform chouJiangCanYu;
-
-    private async void Start()
+    public void Generate(Danmaku danmaku)
     {
+        GameObject bulletChatObj = Instantiate(userItem);
+        bulletChatObj.GetComponent<Content>().imgAddress = danmaku.imgAddress;
+        bulletChatObj.GetComponent<Content>().username = danmaku.name;
+        bulletChatObj.GetComponent<Content>().content = danmaku.text;
+        bulletChatObj.GetComponent<Content>().usernameShadow.effectColor = RandomColor();
+        bulletChatObj.transform.SetParent(parent);
+        Destroy(bulletChatObj, 30f);
 
-
-        imgdic = new Dictionary<int, string>();
-        ld = new DanmakuLoader();
-        bool isConnect = await ld.ConnectAsync(roomID);
-        Debug.Log(isConnect);
-        ld.OnDanmuCallBack = (a, b, c) => {
-            HttpRequestHelp.userId = int.Parse(c);
-            string imgAddress = "";
-            if (!imgdic.ContainsKey(HttpRequestHelp.userId))
-            {
-                string json = h.GetMsg();
-                var obj = JObject.Parse(json);
-                imgAddress = obj["data"]["face"].ToString();
-                imgdic.Add(HttpRequestHelp.userId, imgAddress);
-            }
-            else
-            {
-                imgAddress = imgdic[HttpRequestHelp.userId];
-            }
-            Generate(a, b , imgAddress); 
-        };
-    }
-    public void Generate(string username,string content,string imgAddress)
-    {
-        GameObject danMuObj = Instantiate(userItem);
-        danMuObj.GetComponent<Content>().imgAddress = imgAddress;
-        danMuObj.GetComponent<Content>().username = username;
-        danMuObj.GetComponent<Content>().content = content;
-        danMuObj.GetComponent<Content>()._username.color = RandomColor();
-        danMuObj.transform.SetParent(parent);
-        Destroy(danMuObj, 20f);
+        #region DanmuDrawPrizeBeginToCount
         if (isBegin)
         {
-            //如果弹幕等于口令
-            if (content == MingDanController.controller.order)
+            if (danmaku.text == ListOfUserController.controller.order)
             {
-                int checkID = 0;
-                foreach (var ID in MingDanController.controller.mingDan) 
+                if (ListOfUserController.controller.fansMedalLevel!="")
                 {
-                    if (username == ID)
+                    if (int.Parse(ListOfUserController.controller.fansMedalLevel) > 0)
                     {
-                        checkID++;
-                        break;
+                        if (danmaku.MedalName != ListOfUserController.controller.fansMedal) return;
+                        if (danmaku.MedalLv < int.Parse(ListOfUserController.controller.fansMedalLevel)) return;
                     }
                 }
-                if (checkID == 0)
+
+                foreach (var ID in ListOfUserController.controller.listOfUser)
                 {
-                    MingDanController.controller.AddMingDan(username);
-                    GameObject chouJiangObj = Instantiate(userItem);
-                    chouJiangObj.GetComponent<Content>().imgAddress = imgAddress;
-                    chouJiangObj.GetComponent<Content>().username = username;
-                    chouJiangObj.GetComponent<Content>().content = "参与了抽奖";
-                    chouJiangObj.GetComponent<Content>()._username.color = RandomColor();
-                    chouJiangObj.transform.SetParent(chouJiangCanYu);
-                    Destroy(chouJiangObj, 15f);
+                    if (danmaku.name == ID) return;
                 }
+                ListOfUserController.controller.AddListOfUser(danmaku.name);
+                GameObject enterThePrizeDrawObj = Instantiate(userItem);
+                enterThePrizeDrawObj.GetComponent<Content>().imgAddress = danmaku.imgAddress;
+                enterThePrizeDrawObj.GetComponent<Content>().username = danmaku.name;
+                enterThePrizeDrawObj.GetComponent<Content>().content = "参与了抽奖";
+                enterThePrizeDrawObj.GetComponent<Content>().usernameShadow.effectColor = RandomColor();
+                enterThePrizeDrawObj.transform.SetParent(enterThePrizeDrawParent);
+                Destroy(enterThePrizeDrawObj, 20f);
+
             }
-        }   
+        }
+        #endregion
+
     }
 
-    private void OnApplicationQuit()
-    {
-        if (ld != null)
-        {
-            ld.OnDanmuCallBack = null;
-            ld.Disconnect();
-        }
-    }
 
     Color RandomColor()
     {
-        //随机颜色的RGB值。即刻得到一个随机的颜色
+        //RandomColorRGB
         float r = UnityEngine.Random.Range(0f, 1f);
         float g = UnityEngine.Random.Range(0f, 1f);
         float b = UnityEngine.Random.Range(0f, 1f);
         Color color = new Color(r, g, b);
         return color;
+    }
+
+    private void Update()
+    {
+        if (live.DanmakuQueue.Count > 0)
+        {
+            //GetDanmu
+            Danmaku danmaku = live.DanmakuQueue.Dequeue();
+            Generate(danmaku);
+        }
     }
 }

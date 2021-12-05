@@ -2,16 +2,18 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - BeginPanel
-    - ChangeOrderPanel
-    - ChouJiangPanel
     - Content
     - CountPanel
     - CsgoItem
     - CsgoRoll
     - Danmu
+    - DestroyUserInPool
+    - ListOfUserController
+    - Live
     - MainPanel
-    - MingDanController
     - Pool
+    - PrizeDrawPanel
+    - SettingPanel
     - UserInPool
     - UserInWinner
     Unity.Rider.Editor.dll:
@@ -19,8 +21,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -39,6 +43,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Mask
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
+    - UnityEngine.UI.Shadow
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scene/Begin.unity:
@@ -61,23 +66,25 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11330}
+      Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11360}
+      Script: {instanceID: 11362}
     - Class: 114
-      Script: {instanceID: 11580}
+      Script: {instanceID: 11584}
     - Class: 114
-      Script: {instanceID: 12128}
+      Script: {instanceID: 12040}
     - Class: 114
-      Script: {instanceID: 12704}
+      Script: {instanceID: 12132}
     - Class: 114
-      Script: {instanceID: 12980}
+      Script: {instanceID: 12708}
     - Class: 114
-      Script: {instanceID: 13368}
+      Script: {instanceID: 12984}
     - Class: 114
-      Script: {instanceID: 13392}
+      Script: {instanceID: 13366}
     - Class: 114
-      Script: {instanceID: 13880}
+      Script: {instanceID: 13390}
+    - Class: 114
+      Script: {instanceID: 13874}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -103,6 +110,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
     - Class: 28
       Script: {instanceID: 0}
     - Class: 48
@@ -118,55 +127,61 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11330}
-    - Class: 114
       Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11360}
+      Script: {instanceID: 11334}
     - Class: 114
-      Script: {instanceID: 11384}
+      Script: {instanceID: 11362}
     - Class: 114
-      Script: {instanceID: 11520}
+      Script: {instanceID: 11386}
     - Class: 114
-      Script: {instanceID: 11580}
+      Script: {instanceID: 11522}
     - Class: 114
       Script: {instanceID: 11584}
     - Class: 114
-      Script: {instanceID: 11700}
+      Script: {instanceID: 11588}
     - Class: 114
-      Script: {instanceID: 11754}
+      Script: {instanceID: 11704}
     - Class: 114
-      Script: {instanceID: 11770}
+      Script: {instanceID: 11758}
     - Class: 114
-      Script: {instanceID: 12128}
+      Script: {instanceID: 11778}
     - Class: 114
-      Script: {instanceID: 12298}
+      Script: {instanceID: 12040}
     - Class: 114
-      Script: {instanceID: 12336}
+      Script: {instanceID: 12132}
     - Class: 114
-      Script: {instanceID: 12350}
+      Script: {instanceID: 12302}
     - Class: 114
-      Script: {instanceID: 12402}
+      Script: {instanceID: 12340}
     - Class: 114
-      Script: {instanceID: 12612}
+      Script: {instanceID: 12354}
     - Class: 114
-      Script: {instanceID: 12614}
+      Script: {instanceID: 12406}
     - Class: 114
-      Script: {instanceID: 12704}
+      Script: {instanceID: 12592}
     - Class: 114
-      Script: {instanceID: 12840}
+      Script: {instanceID: 12618}
     - Class: 114
-      Script: {instanceID: 12980}
+      Script: {instanceID: 12620}
     - Class: 114
-      Script: {instanceID: 13124}
+      Script: {instanceID: 12708}
     - Class: 114
-      Script: {instanceID: 13392}
+      Script: {instanceID: 12844}
     - Class: 114
-      Script: {instanceID: 13650}
+      Script: {instanceID: 12984}
     - Class: 114
-      Script: {instanceID: 13802}
+      Script: {instanceID: 13126}
     - Class: 114
-      Script: {instanceID: 13880}
+      Script: {instanceID: 13390}
+    - Class: 114
+      Script: {instanceID: 13664}
+    - Class: 114
+      Script: {instanceID: 13766}
+    - Class: 114
+      Script: {instanceID: 13796}
+    - Class: 114
+      Script: {instanceID: 13874}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -174,8 +189,6 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
-      Script: {instanceID: 0}
-    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -244,7 +257,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 3c1f90d7482a8ab6dd43ffcb56104200
+      Hash: 7ae1fc9acdf2ef34e95d89769aa422c5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Danmu
@@ -316,22 +329,16 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: c88545df6197d9167c441d35030ccd05
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: MingDanController
+    className: Live
   - hash:
       serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: LayoutElement
-  - hash:
-      serializedVersion: 2
-      Hash: 7b58da42ea960ca7ddaf830d9441ff9f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: JsonNetSample
   - hash:
       serializedVersion: 2
       Hash: 18c222bef9ae745ce69ddde9b74337ca
@@ -406,7 +413,7 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
-      Hash: 7682f6bf858924c4c7a0c2580906788a
+      Hash: c169612b6217742b0ac1e1e2a1adcd00
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CountPanel
@@ -415,10 +422,10 @@ ScriptsOnlyBuild:
       Hash: c6f14eb18c6b00de995866f241fb43fd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ChouJiangPanel
+    className: PrizeDrawPanel
   - hash:
       serializedVersion: 2
-      Hash: 43b7a151b39b67daedf6fecb8a249ff3
+      Hash: 58dd368a303265352b4ead982df649d0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Content
@@ -442,19 +449,25 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
+      Hash: 34f52f118353a6971695c56c48e7e18f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ListOfUserController
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
-      Hash: 7a5531652883eeb0a6e6406fe3d8f537
+      Hash: e86fad219bf3fbd9a88c7bcd9796310e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CsgoRoll
   - hash:
       serializedVersion: 2
-      Hash: f598491f700854ceb5eb49134dc261fd
+      Hash: 6bb2d473fb6dfdd5430f7df764846523
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainPanel
@@ -550,7 +563,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: fee16489234da0db6734ec33207d0834
+      Hash: bc8a11ee18a9bfea808ec655463c85bb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BeginPanel
@@ -586,10 +599,10 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
-      Hash: dfb91cf73992cbb73339f6314162adf0
+      Hash: 45db004582fb093edd131da6a2844f03
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: ChangeOrderPanel
+    className: SettingPanel
   - hash:
       serializedVersion: 2
       Hash: 8f15c253902ff4eef507927669b9dc80
@@ -605,6 +618,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroyUserInPool
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: PlayModeRunnerCallback
@@ -616,7 +635,7 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: 2387a474f633de6411756bac67c96fea
+      Hash: 1310c7e177ddc013560eff49447e82dc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Pool
@@ -696,4 +715,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scene/Begin.unity
   - Assets/Scene/Main.unity
-  playerPath: "D:/KuaiSu/UnityProjects/Danmu/bilibilidanmuchoujiang/build/20211202/B\u7AD9\u5F39\u5E55\u62BD\u5956.exe"
+  playerPath: "D:/KuaiSu/UnityProjects/Danmu/bilibilidanmuchoujiang/build/20211205Windows/B\u7AD9\u5F39\u5E55\u62BD\u5956.exe"

@@ -8,32 +8,39 @@ public class CountPanel : MonoBehaviour
     public Text orderText;
     public Text prizeText;
     public Text countText;
+    public Text fansLevelText;
 
     public GameObject beginCountBotton;
     public GameObject endCountBotton;
-    public GameObject chouJiangBotton;
+    public GameObject prizeDrawBotton;
     public GameObject settingBotton;
 
-    public GameObject chouJiangPanel;
-    public GameObject setOrderPanel;
+    public GameObject prizeDrawPanel;
+    public GameObject settingPanel;
 
     private void Start()
     {
         beginCountBotton.SetActive(true);
         endCountBotton.SetActive(false);
-        chouJiangBotton.SetActive(false);
+        prizeDrawBotton.SetActive(false);
         countText.gameObject.SetActive(false);
         settingBotton.SetActive(true);
+        fansLevelText.gameObject.SetActive(false);
     }
-    //开始统计
+
     public void BeginToCount() 
     {
         beginCountBotton.SetActive(false);
         endCountBotton.SetActive(true);
-        chouJiangBotton.SetActive(false);
+        prizeDrawBotton.SetActive(false);
         countText.gameObject.SetActive(true);
         settingBotton.SetActive(false);
-        MingDanController.controller.mingDan = new List<string>();
+        if (int.Parse(ListOfUserController.controller.fansMedalLevel)>0)
+        {
+            fansLevelText.gameObject.SetActive(true);
+            fansLevelText.text = "粉丝牌等级>="+ ListOfUserController.controller.fansMedalLevel;
+        }       
+        ListOfUserController.controller.listOfUser = new List<string>();
         Danmu.isBegin = true;
 
     }
@@ -43,21 +50,22 @@ public class CountPanel : MonoBehaviour
     {
         beginCountBotton.SetActive(true);
         endCountBotton.SetActive(false);
-        chouJiangBotton.SetActive(true);
+        prizeDrawBotton.SetActive(true);
         settingBotton.SetActive(true);
+        fansLevelText.gameObject.SetActive(false);
         Danmu.isBegin = false;
     }
 
     public void OpenChouJiangPanel() 
     {
-        chouJiangPanel.SetActive(true);
-        MingDanController.controller.ResetJiangChi();
-        chouJiangPanel.GetComponent<ChouJiangPanel>().DeleteUserInWinner();
+        prizeDrawPanel.SetActive(true);
+        ListOfUserController.controller.ResetListOfPrizePool();
+        prizeDrawPanel.GetComponent<PrizeDrawPanel>().DeleteUserInWinner();
     }
 
-    public void OpenSetOrderPanel()
+    public void OpenSettingPanel()
     {
-        setOrderPanel.SetActive(true);
+        settingPanel.SetActive(true);
     }
 
     public void CloseCountPanel() 
@@ -69,8 +77,8 @@ public class CountPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        orderText.text = "抽奖口令："+ MingDanController.controller.order;
-        countText.text = "现在已经有" + MingDanController.controller.mingDan.Count.ToString() + "人参加了抽奖";
-        prizeText.text = "奖品：" + MingDanController.controller.prize;
+        orderText.text = "抽奖口令："+ ListOfUserController.controller.order;
+        countText.text = "现在已经有" + ListOfUserController.controller.listOfUser.Count.ToString() + "人参加了抽奖";
+        prizeText.text = "奖品：" + ListOfUserController.controller.prize;
     }
 }

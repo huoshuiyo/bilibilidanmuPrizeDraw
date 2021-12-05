@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleBilibiliDanmakuClient</name>
+    </assembly>
+    <members>
+        <member name="T:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions">
+            <summary>
+            Contains the extensions methods for easily performing request or handling response in HttpClient.
+            </summary>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.SendAsync(System.Net.Http.HttpClient,System.Net.Http.HttpMethod,System.Uri,System.Net.Http.HttpContent,System.Threading.CancellationToken)">
+            <param name="client">The <see cref="T:System.Net.Http.HttpClient"/>.</param>
+            <param name="method">The HTTP method.</param>
+            <param name="uri">The Uri to request.</param>
+            <param name="content">The contents of the HTTP message.</param>
+            <param name="token">A <see cref="T:System.Threading.CancellationToken"/> which may be used to cancel the request operation.</param>
+            <inheritdoc cref="M:System.Net.Http.HttpClient.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetBytesAsync(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},System.Threading.CancellationToken)">
+            <param name="responseTask">An asynchronous operation that represents the HTTP response.</param>
+            <param name="token">The <paramref name="token"/> is ignored since <see cref="M:System.Net.Http.HttpContent.ReadAsByteArrayAsync"/> has no reload that uses <see cref="T:System.Threading.CancellationToken"/>.</param>
+            <inheritdoc cref="M:System.Net.Http.HttpContent.ReadAsByteArrayAsync"/>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetStringAsync(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},System.Threading.CancellationToken)">
+            <param name="responseTask">An asynchronous operation that represents the HTTP response.</param>
+            <param name="token">The <paramref name="token"/> is ignored since <see cref="M:System.Net.Http.HttpContent.ReadAsStringAsync"/> has no reload that uses <see cref="T:System.Threading.CancellationToken"/>.</param>
+            <inheritdoc cref="M:System.Net.Http.HttpContent.ReadAsStringAsync"/>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.ForceJson(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage})">
+            <summary>
+            Sets Content-Type in response to application/json.
+            </summary>
+            <param name="responseTask">An asynchronous operation that represents the HTTP response.</param>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetObjectAsync``1(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetObjectAsync``1(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},Newtonsoft.Json.JsonSerializerSettings,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetObjectAsync``1(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},Newtonsoft.Json.JsonSerializerSettings,System.Threading.CancellationToken)">
+            <summary>
+            Deserializes the HTTP content to an instance of <typeparamref name="T"/> as an asynchronous operation.
+            </summary>
+            <param name="responseTask">An asynchronous operation that represents the HTTP response.</param>
+            <param name="options">A <see cref="T:Newtonsoft.Json.JsonSerializerSettings"/> to be used while deserializing the HTTP content.</param>
+            <param name="token">The <paramref name="token"/> is ignored since <see cref="M:System.Net.Http.HttpContent.ReadAsStringAsync"/> has no reload that uses <see cref="T:System.Threading.CancellationToken"/>.</param>
+            <returns>A task that represents the asynchronous deserialize operation.</returns>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetObjectAsync(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},System.Type,System.Threading.CancellationToken)">
+            <inheritdoc cref="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetObjectAsync(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},System.Type,Newtonsoft.Json.JsonSerializerSettings,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetObjectAsync(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},System.Type,Newtonsoft.Json.JsonSerializerSettings,System.Threading.CancellationToken)">
+            <summary>
+            Deserializes the HTTP content to an instance of <paramref name="returnType"/> as an asynchronous operation.
+            </summary>
+            <param name="returnType">The type of the HTTP content to convert to and return.</param>
+            <inheritdoc cref="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetObjectAsync``1(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},Newtonsoft.Json.JsonSerializerSettings,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetJsonAsync(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},System.Threading.CancellationToken)">
+            <inheritdoc cref="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetJsonAsync(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},Newtonsoft.Json.JsonSerializerSettings,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetJsonAsync(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},Newtonsoft.Json.JsonSerializerSettings,System.Threading.CancellationToken)">
+            <summary>
+            Deserializes the HTTP content to an instance of <see cref="T:Newtonsoft.Json.Linq.JToken"/> as an asynchronous operation.
+            </summary>
+            <inheritdoc cref="M:SimpleBilibiliDanmakuClient.Extensions.HttpClientExtensions.GetObjectAsync``1(System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage},Newtonsoft.Json.JsonSerializerSettings,System.Threading.CancellationToken)"/>
+        </member>
+        <member name="T:SimpleBilibiliDanmakuClient.Models.BilibiliDanmakuProtocol">
+            <summary>
+            表示 Bilibili 直播平台的弹幕协议头
+            </summary>
+        </member>
+        <member name="F:SimpleBilibiliDanmakuClient.Models.BilibiliDanmakuProtocol.PacketLength">
+            <summary>
+            消息总长度 (协议头 + 数据长度)
+            </summary>
+        </member>
+        <member name="F:SimpleBilibiliDanmakuClient.Models.BilibiliDanmakuProtocol.Magic">
+            <summary>
+            消息头长度 (固定为16[sizeof(DanmakuProtocol)])
+            </summary>
+        </member>
+        <member name="F:SimpleBilibiliDanmakuClient.Models.BilibiliDanmakuProtocol.CompressedFlag">
+            <summary>
+            压缩标志
+            </summary>
+        </member>
+        <member name="F:SimpleBilibiliDanmakuClient.Models.BilibiliDanmakuProtocol.Version">
+            <summary>
+            消息版本号
+            </summary>
+        </member>
+        <member name="F:SimpleBilibiliDanmakuClient.Models.BilibiliDanmakuProtocol.Action">
+            <summary>
+            消息类型
+            </summary>
+        </member>
+        <member name="F:SimpleBilibiliDanmakuClient.Models.BilibiliDanmakuProtocol.Parameter">
+            <summary>
+            参数, 固定为1
+            </summary>
+        </member>
+        <member name="M:SimpleBilibiliDanmakuClient.Models.BilibiliDanmakuProtocol.ChangeEndian">
+            <summary>
+            将协议头转为网络字节序
+            </summary>
+        </member>
+    </members>
+</doc>

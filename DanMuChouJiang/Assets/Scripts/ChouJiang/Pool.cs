@@ -15,11 +15,14 @@ public class Pool : MonoBehaviour
     [Header("名单生成地")]
     public Transform parent;
 
+    [Header("名单列表")]
+    public List<GameObject> usersInPool=new List<GameObject>();
+
 
     // Update is called once per frame
     void Update()
     {
-        countInPool.text = "当前奖池还有"+ MingDanController.controller.jiangChi.Count.ToString() + "人";
+        countInPool.text = "当前奖池还有"+ ListOfUserController.controller.ListOfPrizePool.Count.ToString() + "人";
     }
     //创造池
     public void CreateUserInPool() 
@@ -30,24 +33,43 @@ public class Pool : MonoBehaviour
             Destroy(parent.transform.GetChild(i).gameObject);//
         }
         //创造
-        foreach (var user in MingDanController.controller.jiangChi)
-        {
+        usersInPool = new List<GameObject>();
+        foreach (var user in ListOfUserController.controller.ListOfPrizePool)
+        {         
             GameObject userInPoolObj = Instantiate(userInPool);
+            usersInPool.Add(userInPoolObj);
             userInPoolObj.GetComponent<UserInPool>().SetUserName(user);
             userInPoolObj.transform.SetParent(parent);
         }
     }
+
     //响指
     public void XiangZhi()
     {
-        int jiangChiCount = MingDanController.controller.jiangChi.Count;
-        for(int i = 0;i < (jiangChiCount/2);i++) 
+        int userInPoolCount = ListOfUserController.controller.ListOfPrizePool.Count;
+        for(int i = 0;i < (userInPoolCount/2);i++) 
         {
-            string loser = MingDanController.controller.jiangChi.OrderBy(u => Guid.NewGuid()).First();
-            MingDanController.controller.RemoveJiangChi(loser);
+            DeleteUserFromPool();
         }
-        CreateUserInPool();
     }
+
+    public void DeleteUserFromPool() 
+    {
+        string loser = ListOfUserController.controller.ListOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
+        foreach (GameObject user in usersInPool)
+        {
+            string userName = user.GetComponent<UserInPool>().userName.text;
+            if (userName == loser)
+            {
+                user.GetComponent<Animator>().SetBool("isClose", true);
+                usersInPool.Remove(user);
+                break;
+            }
+        }
+        ListOfUserController.controller.RemoveListOfPrizePool(loser);
+        
+    }
+
 
     //关闭
     public void ClosePool()
