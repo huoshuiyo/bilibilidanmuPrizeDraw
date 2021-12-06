@@ -42,6 +42,7 @@ public class Live : MonoBehaviour
         }
         catch (Exception e)
         {
+ 
             Debug.Log(e.ToString());
         }
 
@@ -147,9 +148,9 @@ public class Live : MonoBehaviour
                     string giftName = obj["data"]["giftName"].ToString();
                     uint giftCount = obj["data"]["num"].ToObject<uint>();
                     string coinType = obj["data"]["coin_type"].ToString();
-                    //Debug.Log(string.Format("[礼物信息]赠送者:{0}，礼物名：{1} {2}个，" +
-                    //    "方式：{3}，价值：{4}，类型：{5}", userName, giftName,
-                    //    giftCount, action, totalPrice, coinType));
+                    Debug.Log(string.Format("[礼物信息]赠送者:{0}，礼物名：{1} {2}个，" +
+                        "方式：{3}，价值：{4}，类型：{5}", userName, giftName,
+                        giftCount, action, totalPrice, coinType));
 
                     GiftQueue.Enqueue(new Gift
                     {

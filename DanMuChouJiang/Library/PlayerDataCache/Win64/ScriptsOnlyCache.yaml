@@ -7,6 +7,7 @@ ScriptsOnlyBuild:
     - CsgoItem
     - CsgoRoll
     - Danmu
+    - DanmuSettingPanel
     - DestroyUserInPool
     - ListOfUserController
     - Live
@@ -14,6 +15,7 @@ ScriptsOnlyBuild:
     - Pool
     - PrizeDrawPanel
     - SettingPanel
+    - UserGift
     - UserInPool
     - UserInWinner
     Unity.Rider.Editor.dll:
@@ -21,8 +23,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -43,6 +47,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
   sceneClasses:
     Assets/Scene/Begin.unity:
     - Class: 1
@@ -180,6 +185,12 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13796}
     - Class: 114
       Script: {instanceID: 13874}
+    - Class: 114
+      Script: {instanceID: 13894}
+    - Class: 114
+      Script: {instanceID: 253906}
+    - Class: 114
+      Script: {instanceID: 441468}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -255,7 +266,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 7ae1fc9acdf2ef34e95d89769aa422c5
+      Hash: 266e50c737f099773f9644d5d3f87cbf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Danmu
@@ -465,7 +476,7 @@ ScriptsOnlyBuild:
     className: CsgoRoll
   - hash:
       serializedVersion: 2
-      Hash: 6bb2d473fb6dfdd5430f7df764846523
+      Hash: b73201173cb9faa3a3214190ddd0b534
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MainPanel
@@ -709,6 +720,24 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 0cc27450a7e1a6ea0e9863d235970ca9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UserGuard
+  - hash:
+      serializedVersion: 2
+      Hash: 9edf8513407861cc646362e5cd0b0542
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UserGift
+  - hash:
+      serializedVersion: 2
+      Hash: e287f2e8890018d99f46ddac8f83b193
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DanmuSettingPanel
   platform: 19
   scenePathNames:
   - Assets/Scene/Begin.unity

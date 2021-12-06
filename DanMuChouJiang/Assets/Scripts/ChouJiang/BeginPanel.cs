@@ -39,6 +39,9 @@ public class BeginPanel : MonoBehaviour
         }
         Live.roomID = int.Parse(roomInput.text);
         PlayerPrefs.SetString("RoomID", roomInput.text);
+
+        Live.danmakuMinULLevel = int.Parse(danmuLevelInput.text);
+        PlayerPrefs.SetString("DanmuLevelInput", danmuLevelInput.text);
         SceneManager.LoadScene(1);
     }
 }

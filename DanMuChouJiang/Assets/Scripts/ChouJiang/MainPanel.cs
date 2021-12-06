@@ -8,7 +8,10 @@ public class MainPanel : MonoBehaviour
 {
 
     public Animator buttonBGAnimator;
+
     public GameObject countPanel;
+    public GameObject danmuSettingPanel;
+
     public Text popularityText;
 
     public bool isStart = true;
@@ -21,6 +24,11 @@ public class MainPanel : MonoBehaviour
     public void OpenCountPanel() 
     {
         countPanel.SetActive(true);
+    }
+
+    public void OpenDanMuSettingPanel()
+    {
+        danmuSettingPanel.SetActive(true);
     }
 
     public void ButtonBGControl()

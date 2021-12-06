@@ -11,14 +11,16 @@ using Newtonsoft.Json.Linq;
 public class Danmu : MonoBehaviour
 {
     public Live live;
-    public GameObject userItem;
-
-    public Transform parent;
 
     public static bool isBegin = false;
+
+    #region DanmuCreate
+
+    public GameObject userItem;
+    public Transform parent;
     public Transform enterThePrizeDrawParent;
 
-    public void Generate(Danmaku danmaku)
+    public void CreateDanmu(Danmaku danmaku)
     {
         GameObject bulletChatObj = Instantiate(userItem);
         bulletChatObj.GetComponent<Content>().imgAddress = danmaku.imgAddress;
@@ -33,7 +35,7 @@ public class Danmu : MonoBehaviour
         {
             if (danmaku.text == ListOfUserController.controller.order)
             {
-                if (ListOfUserController.controller.fansMedalLevel!="")
+                if (ListOfUserController.controller.fansMedalLevel != "")
                 {
                     if (int.Parse(ListOfUserController.controller.fansMedalLevel) > 0)
                     {
@@ -60,6 +62,42 @@ public class Danmu : MonoBehaviour
         #endregion
 
     }
+    #endregion
+
+    #region GiftCreate
+    public GameObject guardItem;
+    public GameObject giftItem;
+
+    public Transform guardParent;
+    public Transform goldGiftParent;
+    public Transform freeGiftParent;
+    public void CreateGift(Gift gift)
+    {
+        GameObject giftObj = Instantiate(giftItem);
+        giftObj.GetComponent<UserGift>().username = gift.UserName;
+        giftObj.GetComponent<UserGift>().gift = gift.GiftName;
+        giftObj.GetComponent<UserGift>().count = "X" + gift.GiftCount;
+        if (gift.CoinType == "gold")
+        {
+            giftObj.transform.SetParent(goldGiftParent);
+        }
+        if (gift.CoinType == "silver")
+        {
+            giftObj.transform.SetParent(freeGiftParent);
+            Destroy(giftObj, 30f);
+        }
+
+    }
+
+    public void CreateGuard(Guard guard)
+    {
+        GameObject guardObj = Instantiate(giftItem);
+        guardObj.GetComponent<UserGuard>().username = guard.userName;
+        guardObj.GetComponent<UserGuard>().guard = guard.GuardName;
+        guardObj.GetComponent<UserGuard>().count = guard.count + "个月";
+        guardObj.transform.SetParent(guardParent);
+    }
+    #endregion
 
 
     Color RandomColor()
@@ -78,7 +116,20 @@ public class Danmu : MonoBehaviour
         {
             //GetDanmu
             Danmaku danmaku = live.DanmakuQueue.Dequeue();
-            Generate(danmaku);
+            CreateDanmu(danmaku);
         }
+        if (live.GiftQueue.Count > 0)
+        {
+            //GetDanmu
+            Gift gift = live.GiftQueue.Dequeue();
+            CreateGift(gift);
+        }
+        if (live.GuardQueue.Count > 0)
+        {
+            //GetDanmu
+            Guard guard = live.GuardQueue.Dequeue();
+            CreateGuard(guard);
+        }
+
     }
 }
