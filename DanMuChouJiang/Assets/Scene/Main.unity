@@ -2814,11 +2814,11 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 7
   m_StartCorner: 0
-  m_StartAxis: 1
+  m_StartAxis: 0
   m_CellSize: {x: 197.86, y: 26.2}
   m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 1
 --- !u!222 &121670972
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15163,11 +15163,11 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 7
   m_StartCorner: 0
-  m_StartAxis: 1
+  m_StartAxis: 0
   m_CellSize: {x: 197.86, y: 26.2}
   m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 1
 --- !u!222 &707084675
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16708,13 +16708,68 @@ MonoBehaviour:
     type: 3}
   parent: {fileID: 2117325607}
   enterThePrizeDrawParent: {fileID: 495143592}
-  guardItem: {fileID: 6185119736185273410, guid: 39929640545f9be4e96c3933d63fa0c5,
+  danmuArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  danmuCount: 0
+  danmuDrawPrizeArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  danmuDrawPrizeCount: 0
+  guardItem: {fileID: 8490600406572412899, guid: 39929640545f9be4e96c3933d63fa0c5,
     type: 3}
   giftItem: {fileID: 5097354892647135604, guid: df74c9d91ebbef94bb1a83d6da320fab,
     type: 3}
   guardParent: {fileID: 707084672}
   goldGiftParent: {fileID: 1629235959}
   freeGiftParent: {fileID: 121670970}
+  guardArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  freeGiftArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  goldGiftArray:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  guardCount: 0
+  freeGiftCount: 0
+  goldGiftCount: 0
 --- !u!114 &781583841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28641,7 +28696,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.63529414, g: 0.5137255, b: 0.5137255, a: 1}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -35520,11 +35575,11 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 7
   m_StartCorner: 0
-  m_StartAxis: 1
+  m_StartAxis: 0
   m_CellSize: {x: 197.86, y: 26.2}
   m_Spacing: {x: 0, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 1
 --- !u!222 &1629235961
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -39681,8 +39736,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.4}
-  m_SizeDelta: {x: 0, y: 253.31409}
+  m_AnchoredPosition: {x: 0, y: 6.77}
+  m_SizeDelta: {x: 0, y: 238.97852}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1859396193
 GameObject:

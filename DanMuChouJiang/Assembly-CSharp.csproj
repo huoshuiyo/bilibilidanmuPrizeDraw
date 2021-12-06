@@ -65,20 +65,22 @@
     <Compile Include="Assets\Scripts\ChouJiang\SettingPanel.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\UserInPool.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\UserInWinner.cs" />
-    <Compile Include="Assets\Scripts\Content.cs" />
-    <Compile Include="Assets\Scripts\Danmaku.cs" />
-    <Compile Include="Assets\Scripts\Danmu.cs" />
-    <Compile Include="Assets\Scripts\DanmuSettingPanel.cs" />
+    <Compile Include="Assets\Scripts\Danmu\Content.cs" />
+    <Compile Include="Assets\Scripts\Danmu\Danmaku.cs" />
+    <Compile Include="Assets\Scripts\Danmu\Danmu.cs" />
+    <Compile Include="Assets\Scripts\Danmu\DanmuSettingPanel.cs" />
+    <Compile Include="Assets\Scripts\Danmu\HttpRequestHelp.cs" />
+    <Compile Include="Assets\Scripts\Danmu\Live.cs" />
     <Compile Include="Assets\Scripts\Gift\UserGift.cs" />
     <Compile Include="Assets\Scripts\Gift\UserGuard.cs" />
-    <Compile Include="Assets\Scripts\HttpRequestHelp.cs" />
-    <Compile Include="Assets\Scripts\Live.cs" />
+    <Compile Include="Assets\Scripts\TransparentWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Packages\newtonsoft.json.12.0.1\lib\net45\Newtonsoft.Json.xml" />
     <None Include="Assets\Packages\SimpleBilibiliDanmakuClient.1.0.1\lib\netstandard2.0\SimpleBilibiliDanmakuClient.dll" />
     <None Include="Assets\Packages\newtonsoft.json.12.0.1\lib\net45\Newtonsoft.Json.dll" />
     <None Include="Assets\Packages\newtonsoft.json.12.0.1\[Content_Types].xml" />
+    <None Include="Assets\Shader\MakeTransparent.shader" />
     <None Include="Assets\Packages\SimpleBilibiliDanmakuClient.1.0.1\lib\netstandard2.0\SimpleBilibiliDanmakuClient.xml" />
   </ItemGroup>
   <ItemGroup>

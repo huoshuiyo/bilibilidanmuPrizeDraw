@@ -16,6 +16,7 @@ ScriptsOnlyBuild:
     - PrizeDrawPanel
     - SettingPanel
     - UserGift
+    - UserGuard
     - UserInPool
     - UserInWinner
     Unity.Rider.Editor.dll:
@@ -64,6 +65,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -71,23 +74,23 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11332}
     - Class: 114
-      Script: {instanceID: 11362}
+      Script: {instanceID: 11364}
     - Class: 114
-      Script: {instanceID: 11584}
+      Script: {instanceID: 11586}
     - Class: 114
-      Script: {instanceID: 12040}
+      Script: {instanceID: 12044}
     - Class: 114
-      Script: {instanceID: 12132}
+      Script: {instanceID: 12136}
     - Class: 114
-      Script: {instanceID: 12708}
+      Script: {instanceID: 12712}
     - Class: 114
-      Script: {instanceID: 12984}
+      Script: {instanceID: 12990}
     - Class: 114
-      Script: {instanceID: 13366}
+      Script: {instanceID: 13372}
     - Class: 114
-      Script: {instanceID: 13390}
+      Script: {instanceID: 13396}
     - Class: 114
-      Script: {instanceID: 13874}
+      Script: {instanceID: 13880}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -134,63 +137,65 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11334}
     - Class: 114
-      Script: {instanceID: 11362}
+      Script: {instanceID: 11342}
     - Class: 114
-      Script: {instanceID: 11386}
+      Script: {instanceID: 11364}
     - Class: 114
-      Script: {instanceID: 11522}
+      Script: {instanceID: 11388}
     - Class: 114
-      Script: {instanceID: 11584}
+      Script: {instanceID: 11524}
     - Class: 114
-      Script: {instanceID: 11588}
+      Script: {instanceID: 11586}
     - Class: 114
-      Script: {instanceID: 11704}
+      Script: {instanceID: 11590}
     - Class: 114
-      Script: {instanceID: 11758}
+      Script: {instanceID: 11706}
     - Class: 114
-      Script: {instanceID: 11778}
+      Script: {instanceID: 11760}
     - Class: 114
-      Script: {instanceID: 12040}
+      Script: {instanceID: 11780}
     - Class: 114
-      Script: {instanceID: 12132}
+      Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 12302}
+      Script: {instanceID: 12044}
     - Class: 114
-      Script: {instanceID: 12340}
+      Script: {instanceID: 12136}
     - Class: 114
-      Script: {instanceID: 12354}
+      Script: {instanceID: 12306}
     - Class: 114
-      Script: {instanceID: 12406}
+      Script: {instanceID: 12344}
     - Class: 114
-      Script: {instanceID: 12592}
+      Script: {instanceID: 12358}
     - Class: 114
-      Script: {instanceID: 12618}
+      Script: {instanceID: 12410}
     - Class: 114
-      Script: {instanceID: 12620}
+      Script: {instanceID: 12596}
     - Class: 114
-      Script: {instanceID: 12708}
+      Script: {instanceID: 12622}
     - Class: 114
-      Script: {instanceID: 12844}
+      Script: {instanceID: 12624}
     - Class: 114
-      Script: {instanceID: 12984}
+      Script: {instanceID: 12712}
     - Class: 114
-      Script: {instanceID: 13126}
+      Script: {instanceID: 12848}
     - Class: 114
-      Script: {instanceID: 13390}
+      Script: {instanceID: 12936}
     - Class: 114
-      Script: {instanceID: 13664}
+      Script: {instanceID: 12990}
     - Class: 114
-      Script: {instanceID: 13766}
+      Script: {instanceID: 13132}
     - Class: 114
-      Script: {instanceID: 13796}
+      Script: {instanceID: 13396}
     - Class: 114
-      Script: {instanceID: 13874}
+      Script: {instanceID: 13670}
     - Class: 114
-      Script: {instanceID: 13894}
+      Script: {instanceID: 13772}
     - Class: 114
-      Script: {instanceID: 253906}
+      Script: {instanceID: 13802}
     - Class: 114
-      Script: {instanceID: 441468}
+      Script: {instanceID: 13880}
+    - Class: 114
+      Script: {instanceID: 13900}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -222,6 +227,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Mask
+  - hash:
+      serializedVersion: 2
+      Hash: 9edf8513407861cc646362e5cd0b0542
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UserGift
   - hash:
       serializedVersion: 2
       Hash: 4bc4346a71a8df53a6b106f68ef3a190
@@ -266,7 +277,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 266e50c737f099773f9644d5d3f87cbf
+      Hash: 2901321c15ba2286bb6012c821d1ee9f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Danmu
@@ -366,6 +377,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 0cc27450a7e1a6ea0e9863d235970ca9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UserGuard
   - hash:
       serializedVersion: 2
       Hash: ef5c43f921427d03730f6ea4c848f07d
@@ -510,6 +527,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: e287f2e8890018d99f46ddac8f83b193
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DanmuSettingPanel
   - hash:
       serializedVersion: 2
       Hash: f64fd37da5cb89243ec68b5026d70bb8
@@ -722,22 +745,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 0cc27450a7e1a6ea0e9863d235970ca9
+      Hash: 794e162a21befaae8fd726beaf4fb4d8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: UserGuard
-  - hash:
-      serializedVersion: 2
-      Hash: 9edf8513407861cc646362e5cd0b0542
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: UserGift
-  - hash:
-      serializedVersion: 2
-      Hash: e287f2e8890018d99f46ddac8f83b193
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DanmuSettingPanel
+    className: TransparentWindow
   platform: 19
   scenePathNames:
   - Assets/Scene/Begin.unity
