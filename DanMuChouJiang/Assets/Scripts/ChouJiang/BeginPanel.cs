@@ -11,6 +11,7 @@ public class BeginPanel : MonoBehaviour
 
     private void Start()
     {
+        Screen.SetResolution(1200, 750, false);
         if (PlayerPrefs.HasKey("RoomID"))
         {
             roomInput.text = PlayerPrefs.GetString("RoomID");
