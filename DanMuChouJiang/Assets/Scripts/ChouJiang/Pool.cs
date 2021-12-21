@@ -22,7 +22,7 @@ public class Pool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        countInPool.text = "当前奖池还有"+ ListOfUserController.controller.ListOfPrizePool.Count.ToString() + "人";
+        countInPool.text = "当前奖池还有"+ ListOfUserController.controller.listOfPrizePool.Count.ToString() + "人";
     }
     //创造池
     public void CreateUserInPool() 
@@ -34,7 +34,7 @@ public class Pool : MonoBehaviour
         }
         //创造
         usersInPool = new List<GameObject>();
-        foreach (var user in ListOfUserController.controller.ListOfPrizePool)
+        foreach (var user in ListOfUserController.controller.listOfPrizePool)
         {         
             GameObject userInPoolObj = Instantiate(userInPool);
             usersInPool.Add(userInPoolObj);
@@ -46,7 +46,7 @@ public class Pool : MonoBehaviour
     //响指
     public void XiangZhi()
     {
-        int userInPoolCount = ListOfUserController.controller.ListOfPrizePool.Count;
+        int userInPoolCount = ListOfUserController.controller.listOfPrizePool.Count;
         for(int i = 0;i < (userInPoolCount/2);i++) 
         {
             DeleteUserFromPool();
@@ -55,7 +55,7 @@ public class Pool : MonoBehaviour
 
     public void DeleteUserFromPool() 
     {
-        string loser = ListOfUserController.controller.ListOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
+        string loser = ListOfUserController.controller.listOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
         foreach (GameObject user in usersInPool)
         {
             string userName = user.GetComponent<UserInPool>().userName.text;

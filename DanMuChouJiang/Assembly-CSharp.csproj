@@ -61,6 +61,9 @@
     <Compile Include="Assets\Scripts\ChouJiang\ListOfUserController.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\MainPanel.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\Pool.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\PrizeDrawAnim\AnimCamera.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\PrizeDrawAnim\PrizeDrawAnim.cs" />
+    <Compile Include="Assets\Scripts\ChouJiang\PrizeDrawAnim\PrizeDrawAnimPanel.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\PrizeDrawPanel.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\SettingPanel.cs" />
     <Compile Include="Assets\Scripts\ChouJiang\UserInPool.cs" />
@@ -663,8 +666,14 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
@@ -674,6 +683,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>

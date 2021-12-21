@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,19 +26,56 @@ public class PrizeDrawPanel : MonoBehaviour
     [Header("名单生成地")]
     public Transform parent;
 
+
+    public GameObject mainPanel;
+    public GameObject countPanel;
+    public GameObject prizeDrawAnimPanel;
+
+    public GameObject mainCamera;
+
+    public GameObject prizeDrawAnim;
+    public GameObject animCamera;
+
+    public void OpenAnim() 
+    {
+        mainPanel.SetActive(false);
+        countPanel.SetActive(false);
+        mainCamera.SetActive(false);
+        
+        prizeDrawAnimPanel.SetActive(true);
+        prizeDrawAnim.SetActive(true);
+        animCamera.SetActive(true);
+
+        this.gameObject.SetActive(false);
+        prizeDrawAnimPanel.GetComponent<PrizeDrawAnimPanel>().winnerName.gameObject.SetActive(false);
+    }
+
     #region 抽奖
+    public void EnterPrizeDraw(int number) 
+    {
+        if (number == 1)
+        {
+            SingleDraw();
+        }
+        if (number > 1)
+        {
+            MultipleDraws(number);
+        }
+        OpenAnim();
+    }
     //单抽
     public void SingleDraw()
     {
-        if (ListOfUserController.controller.ListOfPrizePool.Count <= 0)
+        if (ListOfUserController.controller.listOfPrizePool.Count <= 0)
         {
             return;
         }
-        string winner = ListOfUserController.controller.ListOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
+        string winner = ListOfUserController.controller.listOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
         ListOfUserController.controller.RemoveListOfPrizePool(winner);
         CreateUserInWinner(winner);
-        Debug.Log("jiangchi: "+ ListOfUserController.controller.ListOfPrizePool.Count);
-        Debug.Log("mingdan: "+ ListOfUserController.controller.listOfUser.Count);
+        ListOfUserController.controller.listOfWinner.Add(winner);
+        //Debug.Log("jiangchi: "+ ListOfUserController.controller.ListOfPrizePool.Count);
+        //Debug.Log("mingdan: "+ ListOfUserController.controller.listOfUser.Count);
 
     }
     //多抽
@@ -53,14 +89,14 @@ public class PrizeDrawPanel : MonoBehaviour
     //自定义
     public void CustonmisedDraw()
     {
-        MultipleDraws(int.Parse(ziDingYiChouJiang.text));
+        EnterPrizeDraw(int.Parse(ziDingYiChouJiang.text));
     }
 
     public void CheckCustonmisedDraw()
     {
-        if (int.Parse(ziDingYiChouJiang.text) > ListOfUserController.controller.ListOfPrizePool.Count)
+        if (int.Parse(ziDingYiChouJiang.text) > ListOfUserController.controller.listOfPrizePool.Count)
         {
-            ziDingYiChouJiang.text = ListOfUserController.controller.ListOfPrizePool.Count.ToString();
+            ziDingYiChouJiang.text = ListOfUserController.controller.listOfPrizePool.Count.ToString();
         }
     }
 
@@ -109,7 +145,7 @@ public class PrizeDrawPanel : MonoBehaviour
 
     private void Update()
     {
-        countInPool.text = "当前奖池还有" + ListOfUserController.controller.ListOfPrizePool.Count.ToString() + "人";
+        countInPool.text = "当前奖池还有" + ListOfUserController.controller.listOfPrizePool.Count.ToString() + "人";
         prizeText.text = "奖品：" + ListOfUserController.controller.prize;
     }
 }

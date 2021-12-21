@@ -15,7 +15,9 @@ public class ListOfUserController : MonoBehaviour
 
     public List<string> listOfUser = new List<string>();
 
-    public List<string> ListOfPrizePool = new List<string>();
+    public List<string> listOfPrizePool = new List<string>();
+
+    public List<string> listOfWinner = new List<string>();
 
     public string prize="";
 
@@ -87,15 +89,20 @@ public class ListOfUserController : MonoBehaviour
 
     public void ResetListOfPrizePool()
     {
-        ListOfPrizePool = new List<string>();
+        listOfPrizePool = new List<string>();
         foreach (var item in listOfUser)
         {
-            ListOfPrizePool.Add(item);
+            listOfPrizePool.Add(item);
         }
     }
 
     public void RemoveListOfPrizePool(string username)
     {
-        ListOfPrizePool.Remove(username);
+        listOfPrizePool.Remove(username);
+    }
+
+    public void RemoveListOfWinner(string username)
+    {
+        listOfWinner.Remove(username);
     }
 }
