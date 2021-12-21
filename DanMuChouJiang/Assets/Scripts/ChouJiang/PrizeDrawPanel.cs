@@ -53,6 +53,14 @@ public class PrizeDrawPanel : MonoBehaviour
     #region 抽奖
     public void EnterPrizeDraw(int number) 
     {
+        if (ListOfUserController.controller.listOfPrizePool.Count <= 0)
+        {
+            return;
+        }
+        if (number <= 0)
+        {
+            return;
+        }
         if (number == 1)
         {
             SingleDraw();

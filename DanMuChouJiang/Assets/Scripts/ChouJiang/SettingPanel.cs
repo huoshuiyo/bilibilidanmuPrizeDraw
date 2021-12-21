@@ -11,6 +11,8 @@ public class SettingPanel : MonoBehaviour
     public InputField fansMedalInput;
     public InputField fansMedalLevelInput;
 
+    public Toggle isOpenWinner;
+
     private void Start()
     {
         if (PlayerPrefs.HasKey("Order"))
@@ -28,6 +30,15 @@ public class SettingPanel : MonoBehaviour
         if (PlayerPrefs.HasKey("FansMedalLevel"))
         {
             fansMedalLevelInput.text = PlayerPrefs.GetString("FansMedalLevel");
+        }
+        if (PlayerPrefs.HasKey("IsWinnerExcluded"))
+        {
+            string a = PlayerPrefs.GetString("IsWinnerExcluded");
+            if (a == "true")
+            {
+
+            }
+
         }
     }
     public void FinishSetting() 
