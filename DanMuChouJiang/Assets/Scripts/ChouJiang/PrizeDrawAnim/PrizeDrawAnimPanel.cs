@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -70,6 +69,7 @@ public class PrizeDrawAnimPanel : MonoBehaviour
 
     public void JumpPrizeDrawAnim()
     {
+        if (prizeDrawAnimObj != null) Destroy(prizeDrawAnimObj.gameObject);
         mainPanel.SetActive(true);
         countPanel.SetActive(true);
         PrizeDrawPanel.SetActive(true);
