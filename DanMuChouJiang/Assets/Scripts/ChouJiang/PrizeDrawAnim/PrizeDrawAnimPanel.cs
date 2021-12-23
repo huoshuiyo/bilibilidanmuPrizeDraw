@@ -35,11 +35,11 @@ public class PrizeDrawAnimPanel : MonoBehaviour
     {
         prizeDrawAnimObj = Instantiate(prizeDrawAnims.OrderBy(u => Guid.NewGuid()).First());
         prizeDrawAnimObj.localPosition = new Vector3(2.11f, 3.52f, 9.74f);
-        string winner = ListOfUserController.controller.listOfWinner.OrderBy(u => Guid.NewGuid()).First();
+        string winner = ListOfUserController.controller.listOfWinnerAnim.OrderBy(u => Guid.NewGuid()).First();
         winnerInUser = winner;
         //prizeDrawAnim.gameObject.GetComponent<PrizeDrawAnim>().winnerName = winner;
         //prizeDrawAnim.gameObject.GetComponent<PrizeDrawAnim>().prizeDrawAnimPanel = gameObject.GetComponent<PrizeDrawAnimPanel>();
-        ListOfUserController.controller.RemoveListOfWinner(winner);
+        ListOfUserController.controller.RemoveListOfWinnerAnim(winner);
         prizeDrawAnimObj.parent = prizeDrawAnimParent;
         Invoke("ShowWinnerName", 2);
     }
@@ -57,7 +57,7 @@ public class PrizeDrawAnimPanel : MonoBehaviour
         isShow = false;
         if (prizeDrawAnimObj != null) Destroy(prizeDrawAnimObj.gameObject);
         winnerName.gameObject.SetActive(false);
-        if (ListOfUserController.controller.listOfWinner.Count > 0)
+        if (ListOfUserController.controller.listOfWinnerAnim.Count > 0)
         {
             CreatePrizeDrawAnim();
         }
@@ -80,6 +80,6 @@ public class PrizeDrawAnimPanel : MonoBehaviour
 
         this.gameObject.SetActive(false);
 
-        ListOfUserController.controller.listOfWinner = new List<string>();
+        ListOfUserController.controller.listOfWinnerAnim = new List<string>();
     }
 }

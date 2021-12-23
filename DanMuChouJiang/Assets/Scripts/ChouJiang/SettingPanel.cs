@@ -11,7 +11,9 @@ public class SettingPanel : MonoBehaviour
     public InputField fansMedalInput;
     public InputField fansMedalLevelInput;
 
-    public Toggle isOpenWinner;
+    public Text winnerCount;
+
+    public Toggle isOpenWinnerExcluded;
 
     private void Start()
     {
@@ -36,7 +38,11 @@ public class SettingPanel : MonoBehaviour
             string a = PlayerPrefs.GetString("IsWinnerExcluded");
             if (a == "true")
             {
-
+                isOpenWinnerExcluded.isOn = true;
+            }
+            else
+            {
+                isOpenWinnerExcluded.isOn = false;
             }
 
         }
@@ -47,7 +53,14 @@ public class SettingPanel : MonoBehaviour
         SetPrize();
         FansMedal();
         FansMedalLevel();
+        SetIsWinnerExcluded();
         this.gameObject.SetActive(false);
+    }
+
+    public void SetIsWinnerExcluded()
+    {
+        ListOfUserController.controller.isWinnerExcluded = isOpenWinnerExcluded.isOn;
+        PlayerPrefs.SetString("IsWinnerExcluded", isOpenWinnerExcluded.isOn.ToString());
     }
     public void SetOrder() 
     {
@@ -70,5 +83,15 @@ public class SettingPanel : MonoBehaviour
     {
         ListOfUserController.controller.SetFansMedalLevel(fansMedalLevelInput.text);
         PlayerPrefs.SetString("FansMedalLevel", fansMedalLevelInput.text);
+    }
+
+    public void ResetListOfWinner() 
+    {
+        ListOfUserController.controller.ResetListOfWinner();
+    }
+
+    private void Update()
+    {
+        winnerCount.text = "累计：" + ListOfUserController.controller.listOfWinner.Count + "人";
     }
 }

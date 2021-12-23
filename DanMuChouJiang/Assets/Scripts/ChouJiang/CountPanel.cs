@@ -20,6 +20,10 @@ public class CountPanel : MonoBehaviour
 
     private void Start()
     {
+        ResetCountPanel();
+    }
+    public void ResetCountPanel() 
+    {
         beginCountBotton.SetActive(true);
         endCountBotton.SetActive(false);
         prizeDrawBotton.SetActive(false);

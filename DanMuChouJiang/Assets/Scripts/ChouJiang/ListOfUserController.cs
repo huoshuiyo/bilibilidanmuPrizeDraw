@@ -14,21 +14,18 @@ public class ListOfUserController : MonoBehaviour
     #endregion
 
     public List<string> listOfUser = new List<string>();
-
     public List<string> listOfPrizePool = new List<string>();
-
     public List<string> listOfWinner = new List<string>();
+    public List<string> listOfWinnerAnim = new List<string>();
+
 
     public string prize="";
-
     public string popularity = "";
-
     public string order = "";
-
     public string fansMedal = "";
-
     public string fansMedalLevel = "";
 
+    public bool isWinnerExcluded = false;
 
     private void Start()
     {
@@ -87,9 +84,18 @@ public class ListOfUserController : MonoBehaviour
         listOfUser= new List<string>();
     }
 
+    public void ResetListOfWinner()
+    {
+        listOfWinner = new List<string>();
+    }
+
     public void ResetListOfPrizePool()
     {
         listOfPrizePool = new List<string>();
+        if (isWinnerExcluded)
+        {
+            RemoveWinnerInListOfUser();
+        }
         foreach (var item in listOfUser)
         {
             listOfPrizePool.Add(item);
@@ -101,8 +107,24 @@ public class ListOfUserController : MonoBehaviour
         listOfPrizePool.Remove(username);
     }
 
-    public void RemoveListOfWinner(string username)
+    public void RemoveListOfWinnerAnim(string username)
     {
-        listOfWinner.Remove(username);
+        listOfWinnerAnim.Remove(username);
+    }
+
+    public void RemoveWinnerInListOfUser()
+    {
+        foreach (var winner in listOfWinner)
+        {
+            try
+            {
+                listOfUser.Remove(winner);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

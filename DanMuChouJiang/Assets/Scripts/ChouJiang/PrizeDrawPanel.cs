@@ -36,6 +36,8 @@ public class PrizeDrawPanel : MonoBehaviour
     public GameObject prizeDrawAnim;
     public GameObject animCamera;
 
+    public List<string> winnerNotSure = new List<string>();
+
     public void OpenAnim() 
     {
         mainPanel.SetActive(false);
@@ -81,7 +83,16 @@ public class PrizeDrawPanel : MonoBehaviour
         string winner = ListOfUserController.controller.listOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
         ListOfUserController.controller.RemoveListOfPrizePool(winner);
         CreateUserInWinner(winner);
-        ListOfUserController.controller.listOfWinner.Add(winner);
+        ListOfUserController.controller.listOfWinnerAnim.Add(winner);
+
+        foreach (string winUser in winnerNotSure)
+        {
+            if (winUser == winner)
+            {
+                return;
+            }
+        }
+        winnerNotSure.Add(winner);
         //Debug.Log("jiangchi: "+ ListOfUserController.controller.ListOfPrizePool.Count);
         //Debug.Log("mingdan: "+ ListOfUserController.controller.listOfUser.Count);
 
@@ -112,6 +123,7 @@ public class PrizeDrawPanel : MonoBehaviour
     public void ResetPool()
     {
         ListOfUserController.controller.ResetListOfPrizePool();
+        winnerNotSure = new List<string>();
         DeleteUserInWinner();
     }
 
@@ -148,7 +160,41 @@ public class PrizeDrawPanel : MonoBehaviour
 
     public void CloseChoujiangPanel()
     {
+        AddListOfWinner();
         this.gameObject.SetActive(false);
+    }
+
+    public void AddListOfWinner() 
+    {
+        if (winnerNotSure.Count == 0)
+        {
+            return;
+        }
+        if (ListOfUserController.controller.listOfWinner.Count == 0)
+        {
+            foreach (var winner in winnerNotSure)
+            {
+                ListOfUserController.controller.listOfWinner.Add(winner);
+            }
+            return;
+        }
+        foreach (string winner in winnerNotSure)
+        {
+            int i = 0;
+            foreach (string winUser in ListOfUserController.controller.listOfWinner)
+            {
+                if (winner == winUser)
+                {
+                    i++;
+                    break;
+                }
+            }
+            if (i == 0)
+            {
+                ListOfUserController.controller.listOfWinner.Add(winner);
+            }
+
+        }
     }
 
     private void Update()

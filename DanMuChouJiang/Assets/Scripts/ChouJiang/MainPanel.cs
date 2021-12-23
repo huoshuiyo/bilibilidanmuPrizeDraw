@@ -24,6 +24,7 @@ public class MainPanel : MonoBehaviour
     public void OpenCountPanel() 
     {
         countPanel.SetActive(true);
+        countPanel.GetComponent<CountPanel>().ResetCountPanel();
     }
 
     public void OpenDanMuSettingPanel()
