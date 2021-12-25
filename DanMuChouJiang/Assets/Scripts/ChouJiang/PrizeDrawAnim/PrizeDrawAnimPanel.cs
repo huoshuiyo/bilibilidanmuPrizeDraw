@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class PrizeDrawAnimPanel : MonoBehaviour
 {
-
     public Text winnerName;
 
     public List<Transform> prizeDrawAnims;
@@ -19,11 +18,14 @@ public class PrizeDrawAnimPanel : MonoBehaviour
     public GameObject countPanel;
     public GameObject PrizeDrawPanel;
     public GameObject mainCamera;
+    public GameObject button;
 
     public GameObject prizeDrawAnim;
     public GameObject animCamera;
 
     public Transform prizeDrawAnimObj = null;
+
+    public Transform gameLight;
 
     public bool isShow = false;
 
@@ -33,14 +35,15 @@ public class PrizeDrawAnimPanel : MonoBehaviour
     public void CreatePrizeDrawAnim()
     {
         prizeDrawAnimObj = Instantiate(prizeDrawAnims.OrderBy(u => Guid.NewGuid()).First());
-        prizeDrawAnimObj.localPosition = new Vector3(2.11f, 3.52f, 9.74f);
+        prizeDrawAnimObj.position = new Vector3(0.33f, 3.81f, 10.6f);
+        prizeDrawAnimObj.localEulerAngles = new Vector3(-6.74f, 0, 0);
         string winner = ListOfUserController.controller.listOfWinnerAnim.OrderBy(u => Guid.NewGuid()).First();
         winnerInUser = winner;
         //prizeDrawAnim.gameObject.GetComponent<PrizeDrawAnim>().winnerName = winner;
         //prizeDrawAnim.gameObject.GetComponent<PrizeDrawAnim>().prizeDrawAnimPanel = gameObject.GetComponent<PrizeDrawAnimPanel>();
         ListOfUserController.controller.RemoveListOfWinnerAnim(winner);
         prizeDrawAnimObj.parent = prizeDrawAnimParent;
-        Invoke("ShowWinnerName", 2);
+        Invoke("ShowWinnerName", 1.9f);
     }
 
     public void ShowWinnerName()
@@ -48,13 +51,15 @@ public class PrizeDrawAnimPanel : MonoBehaviour
         isShow = true;
         winnerName.text = winnerInUser;
         winnerName.gameObject.SetActive(true);
+        button.SetActive(true);
     }
 
     public void CheckIsCreatePrizeDrawAnim()
     {
         if (!isShow) return;
+        button.SetActive(false);
         isShow = false;
-        if (prizeDrawAnimObj != null) Destroy(prizeDrawAnimObj.gameObject);
+        DestroyAnimObj();
         winnerName.gameObject.SetActive(false);
         if (ListOfUserController.controller.listOfWinnerAnim.Count > 0)
         {
@@ -69,7 +74,9 @@ public class PrizeDrawAnimPanel : MonoBehaviour
 
     public void JumpPrizeDrawAnim()
     {
-        if (prizeDrawAnimObj != null) Destroy(prizeDrawAnimObj.gameObject);
+        DestroyAnimObj();
+        gameLight.localEulerAngles = new Vector3(-21, -160, -163);
+        ListOfUserController.controller.listOfWinnerAnim = new List<string>();
         mainPanel.SetActive(true);
         countPanel.SetActive(true);
         PrizeDrawPanel.SetActive(true);
@@ -80,6 +87,10 @@ public class PrizeDrawAnimPanel : MonoBehaviour
 
         this.gameObject.SetActive(false);
 
-        ListOfUserController.controller.listOfWinnerAnim = new List<string>();
+    }
+
+    public void DestroyAnimObj() 
+    {
+        if (prizeDrawAnimObj != null) Destroy(prizeDrawAnimObj.gameObject);
     }
 }

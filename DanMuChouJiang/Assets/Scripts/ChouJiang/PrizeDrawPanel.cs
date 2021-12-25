@@ -48,8 +48,14 @@ public class PrizeDrawPanel : MonoBehaviour
         prizeDrawAnim.SetActive(true);
         animCamera.SetActive(true);
 
-        this.gameObject.SetActive(false);
         prizeDrawAnimPanel.GetComponent<PrizeDrawAnimPanel>().winnerName.gameObject.SetActive(false);
+        prizeDrawAnimPanel.GetComponent<PrizeDrawAnimPanel>().DestroyAnimObj();
+        prizeDrawAnimPanel.GetComponent<PrizeDrawAnimPanel>().button.SetActive(false);
+
+        //prizeDrawAnimPanel.GetComponent<PrizeDrawAnimPanel>().isShow = false;
+
+        this.gameObject.SetActive(false);
+
     }
 
     #region 抽奖
