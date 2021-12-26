@@ -1,4 +1,4 @@
-# Bilibilidanmuchoujiang
+# BilibilidanmuPrizeDraw
 
 #### 介绍
 B站弹幕抽奖工具
@@ -19,6 +19,7 @@ B站弹幕抽奖工具
 4.  响指一声：去掉奖池里一半的人数（人数向下取整）
 5.  CSGO单抽：模拟CSGO开箱的方式进行单抽
 6.  舰长，礼物显示
+7.  抽奖动画
 
 #### BUG反馈
 
@@ -26,4 +27,4 @@ B站弹幕抽奖工具
 
 #### 技术指导
 
-川哥jadieK
+川哥jadieK 梦魇姐姐

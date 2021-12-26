@@ -1,36 +1,30 @@
-# Bilibilidanmuchoujiang
+# BilibilidanmuPrizeDraw
 
-#### Description
-B站弹幕抽奖
+#### 介绍
+B站弹幕抽奖工具
 
-#### Software Architecture
-Software architecture description
-
-#### Installation
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Instructions
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+#### 软件说明
+本项目使用unity2019 4.32f1c1开发
 
 
-#### Gitee Feature
+#### 安装教程
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+打开build文件夹，下载最新的ZIP，即可直接使用打包好的软件
+
+#### 基本功能
+
+1.  弹幕显示 人气显示
+2.  弹幕口令抽奖 可以限制粉丝牌等级
+3.  单抽，十连抽，自定义抽取
+4.  响指一声：去掉奖池里一半的人数（人数向下取整）
+5.  CSGO单抽：模拟CSGO开箱的方式进行单抽
+6.  舰长，礼物显示
+7.  抽奖动画
+
+#### BUG反馈
+
+联系6101612@qq.com（火水)
+
+#### 技术指导
+
+川哥jadieK 梦魇姐姐
