@@ -88,10 +88,13 @@ public class SettingPanel : MonoBehaviour
     public void ResetListOfWinner() 
     {
         ListOfUserController.controller.ResetListOfWinner();
+        SqliteController.Instance.OpenSqlite();
+        SqliteController.Instance.UpdateWinnerExcluded();
+        SqliteController.Instance.Release();
     }
 
     private void Update()
     {
-        winnerCount.text = "累计：" + ListOfUserController.controller.listOfWinner.Count + "人";
+        winnerCount.text = "累计：" + ListOfUserController.controller.listOfWinnerExcluded.Count + "人";
     }
 }

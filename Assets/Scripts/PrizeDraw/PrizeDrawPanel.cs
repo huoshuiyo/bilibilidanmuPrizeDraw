@@ -10,7 +10,7 @@ public class PrizeDrawPanel : MonoBehaviour
     public Text countInPool;
     public Text prizeText;
 
-    public InputField ziDingYiChouJiang;
+    public InputField customInputField;
 
     [Header("奖池")]
     public GameObject poolPanel;
@@ -114,14 +114,14 @@ public class PrizeDrawPanel : MonoBehaviour
     //自定义
     public void CustonmisedDraw()
     {
-        EnterPrizeDraw(int.Parse(ziDingYiChouJiang.text));
+        EnterPrizeDraw(int.Parse(customInputField.text));
     }
 
     public void CheckCustonmisedDraw()
     {
-        if (int.Parse(ziDingYiChouJiang.text) > ListOfUserController.controller.listOfPrizePool.Count)
+        if (int.Parse(customInputField.text) > ListOfUserController.controller.listOfPrizePool.Count)
         {
-            ziDingYiChouJiang.text = ListOfUserController.controller.listOfPrizePool.Count.ToString();
+            customInputField.text = ListOfUserController.controller.listOfPrizePool.Count.ToString();
         }
     }
 
@@ -167,6 +167,7 @@ public class PrizeDrawPanel : MonoBehaviour
     public void CloseChoujiangPanel()
     {
         AddListOfWinner();
+        CreateThisRecord();
         this.gameObject.SetActive(false);
     }
 
@@ -176,18 +177,24 @@ public class PrizeDrawPanel : MonoBehaviour
         {
             return;
         }
-        if (ListOfUserController.controller.listOfWinner.Count == 0)
+        SqliteController.Instance.OpenSqlite();
+        foreach (string winner in winnerNotSure) 
+        {
+            SqliteController.Instance.InsertWinner(winner, ListOfUserController.controller.prize);
+        }
+        SqliteController.Instance.Release();
+        if (ListOfUserController.controller.listOfWinnerExcluded.Count == 0)
         {
             foreach (var winner in winnerNotSure)
             {
-                ListOfUserController.controller.listOfWinner.Add(winner);
+                ListOfUserController.controller.listOfWinnerExcluded.Add(winner);
             }
             return;
         }
         foreach (string winner in winnerNotSure)
         {
             int i = 0;
-            foreach (string winUser in ListOfUserController.controller.listOfWinner)
+            foreach (string winUser in ListOfUserController.controller.listOfWinnerExcluded)
             {
                 if (winner == winUser)
                 {
@@ -197,10 +204,23 @@ public class PrizeDrawPanel : MonoBehaviour
             }
             if (i == 0)
             {
-                ListOfUserController.controller.listOfWinner.Add(winner);
+                ListOfUserController.controller.listOfWinnerExcluded.Add(winner);
             }
-
         }
+    }
+
+    public void CreateThisRecord() 
+    {
+        if (winnerNotSure.Count == 0)
+        {
+            return;
+        }
+        WinnersInfoItem winnersInfoItem = new WinnersInfoItem
+        {
+            prize = ListOfUserController.controller.prize,
+            winners = winnerNotSure
+        };
+        WinnerInfoController.controller.CreateWinnerRecordNew(winnersInfoItem);
     }
 
     private void Update()

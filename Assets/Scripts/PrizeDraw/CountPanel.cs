@@ -17,10 +17,12 @@ public class CountPanel : MonoBehaviour
 
     public GameObject prizeDrawPanel;
     public GameObject settingPanel;
+    public GameObject winnerRecordPanel;
 
     private void Start()
     {
         ResetCountPanel();
+        WinnerInfoController.controller.ProcessingWinnerData();
     }
     public void ResetCountPanel() 
     {
@@ -65,6 +67,11 @@ public class CountPanel : MonoBehaviour
         prizeDrawPanel.SetActive(true);
         ListOfUserController.controller.ResetListOfPrizePool();
         prizeDrawPanel.GetComponent<PrizeDrawPanel>().DeleteUserInWinner();
+    }
+
+    public void OpenWinnerRecordPanel()
+    {
+        winnerRecordPanel.SetActive(true);
     }
 
     public void OpenSettingPanel()

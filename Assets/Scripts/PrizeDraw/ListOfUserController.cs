@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ListOfUserController : MonoBehaviour
 {
-    
-    #region 单例模式
+
+    #region SingletonMode
     public static ListOfUserController controller;
     private void Awake()
     {
@@ -15,7 +15,7 @@ public class ListOfUserController : MonoBehaviour
 
     public List<string> listOfUser = new List<string>();
     public List<string> listOfPrizePool = new List<string>();
-    public List<string> listOfWinner = new List<string>();
+    public List<string> listOfWinnerExcluded = new List<string>();
     public List<string> listOfWinnerAnim = new List<string>();
 
 
@@ -86,7 +86,7 @@ public class ListOfUserController : MonoBehaviour
 
     public void ResetListOfWinner()
     {
-        listOfWinner = new List<string>();
+        listOfWinnerExcluded = new List<string>();
     }
 
     public void ResetListOfPrizePool()
@@ -114,7 +114,7 @@ public class ListOfUserController : MonoBehaviour
 
     public void RemoveWinnerInListOfUser()
     {
-        foreach (var winner in listOfWinner)
+        foreach (var winner in listOfWinnerExcluded)
         {
             try
             {
