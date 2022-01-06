@@ -11454,7 +11454,7 @@ GameObject:
   - component: {fileID: 495143594}
   - component: {fileID: 495143593}
   m_Layer: 5
-  m_Name: enterThePrizeDrawParent
+  m_Name: EnterThePrizeDrawParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38572,6 +38572,7 @@ MonoBehaviour:
   prizeDrawPanel: {fileID: 114839806}
   settingPanel: {fileID: 1048128604}
   winnerRecordPanel: {fileID: 515999412}
+  joinParent: {fileID: 495143591}
 --- !u!1 &1335078358
 GameObject:
   m_ObjectHideFlags: 0
@@ -42673,8 +42674,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -373.8, y: -157.27}
-  m_SizeDelta: {x: 357.04315, y: 285.4591}
+  m_AnchoredPosition: {x: -373.7, y: -166.94}
+  m_SizeDelta: {x: 299.86084, y: 266.12592}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1479953411
 MonoBehaviour:

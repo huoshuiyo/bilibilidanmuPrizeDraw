@@ -168,6 +168,7 @@ public class PrizeDrawPanel : MonoBehaviour
     {
         AddListOfWinner();
         CreateThisRecord();
+        countPanel.GetComponent<CountPanel>().ResetCountPanel();
         this.gameObject.SetActive(false);
     }
 

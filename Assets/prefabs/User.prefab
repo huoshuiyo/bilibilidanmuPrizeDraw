@@ -483,6 +483,7 @@ MonoBehaviour:
   usernameShadow: {fileID: 4628489598582726619}
   _username: {fileID: 504887966041621319}
   _content: {fileID: 2359156625937015610}
+  _animator: {fileID: 8409260934125239417}
 --- !u!95 &8409260934125239417
 Animator:
   serializedVersion: 3
@@ -493,7 +494,7 @@ Animator:
   m_GameObject: {fileID: 8299250823684372355}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f475df6715c3abd41b50a49d667eff9a, type: 2}
+  m_Controller: {fileID: 9100000, guid: d678ef2829e56a44cabd925667eb7c08, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

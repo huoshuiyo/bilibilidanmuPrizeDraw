@@ -19,6 +19,8 @@ public class CountPanel : MonoBehaviour
     public GameObject settingPanel;
     public GameObject winnerRecordPanel;
 
+    public GameObject joinParent;
+
     private void Start()
     {
         ResetCountPanel();
@@ -32,6 +34,13 @@ public class CountPanel : MonoBehaviour
         countText.gameObject.SetActive(false);
         settingBotton.SetActive(true);
         fansLevelText.gameObject.SetActive(false);
+
+        int childCount = joinParent.transform.childCount;
+        for (int i = 0; i < childCount; i++)
+        {
+            Destroy(joinParent.transform.GetChild(0).gameObject);
+        }
+
     }
 
     public void BeginToCount() 

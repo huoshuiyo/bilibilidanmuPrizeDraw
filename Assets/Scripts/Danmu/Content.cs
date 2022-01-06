@@ -16,6 +16,8 @@ public class Content : MonoBehaviour
     public Text _username;
     public Text _content;
 
+    public Animator _animator;
+
     private void Start()
     {
         if (!string.IsNullOrEmpty(imgAddress))
@@ -27,6 +29,19 @@ public class Content : MonoBehaviour
     {
         _username.text = username;
         _content.text = content;
+    }
+
+    public void PlayCloseLater(float sec) 
+    {
+        CancelInvoke();
+        _animator.SetBool("isClose", false);
+        _animator.Play("_Start");
+        Invoke("PlayClose", sec);
+    }
+
+    public void PlayClose() 
+    {
+        _animator.SetBool("isClose",true);
     }
 
     IEnumerator GetImage(string url)
