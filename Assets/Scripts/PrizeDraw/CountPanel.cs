@@ -36,10 +36,14 @@ public class CountPanel : MonoBehaviour
         fansLevelText.gameObject.SetActive(false);
 
         int childCount = joinParent.transform.childCount;
-        for (int i = 0; i < childCount; i++)
+        if (childCount>0)
         {
-            Destroy(joinParent.transform.GetChild(0).gameObject);
+            for (int i = 0; i < childCount; i++)
+            {
+                Destroy(joinParent.transform.GetChild(0).gameObject);
+            }
         }
+
 
     }
 

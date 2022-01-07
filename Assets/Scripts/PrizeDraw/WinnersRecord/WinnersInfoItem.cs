@@ -7,6 +7,9 @@ public class WinnersInfoItem:MonoBehaviour
 {
 
     public string prize;
+
+    public string time;
+
     public List<string> winners;
 
     public Text prizeText;

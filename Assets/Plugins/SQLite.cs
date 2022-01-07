@@ -1471,8 +1471,6 @@ namespace SQLite4Unity3d
 			return c;
 		}
 
-
-
 		/// <summary>
 		/// Deletes the given object from the database using its primary key.
 		/// </summary>

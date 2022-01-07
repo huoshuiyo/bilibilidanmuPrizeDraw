@@ -22,6 +22,9 @@ public class WinnerInfoController : MonoBehaviour
 
     public Transform winnersInfoItemParent;
 
+    /// <summary>
+    /// 生成中奖记录
+    /// </summary>
     public void ProcessingWinnerData()
     {
         SqliteController.Instance.OpenSqlite();
@@ -32,8 +35,11 @@ public class WinnerInfoController : MonoBehaviour
         SqliteController.Instance.Release();
 
         WinnersInfoItem winnersInfoItemTemp = new WinnersInfoItem();
+
+        
         foreach (WinnerInfo info in winnerInfos)
         {
+            //中奖者排除数据录入
             if (info.IsExcluded == 1)
             {
                 int i = 0;
@@ -51,7 +57,7 @@ public class WinnerInfoController : MonoBehaviour
                 }
             }
 
-            if (info.Prize == winnersInfoItemTemp.prize)
+            if (info.Prize == winnersInfoItemTemp.prize && info.Time == winnersInfoItemTemp.time)
             {
                 winnersInfoItemTemp.winners.Add(info.Uid);
                 continue;
@@ -64,7 +70,8 @@ public class WinnerInfoController : MonoBehaviour
             winnersInfoItemTemp = new WinnersInfoItem
             {
                 prize = info.Prize,
-                winners = new List<string>()
+                winners = new List<string>(),
+                time = info.Time,
             };
             winnersInfoItemTemp.winners.Add(info.Uid);
         }
@@ -87,7 +94,8 @@ public class WinnerInfoController : MonoBehaviour
         winnersInfoItemObj.GetComponent<WinnersInfoItem>().prize = item.prize;
         winnersInfoItemObj.GetComponent<WinnersInfoItem>().winners = item.winners;
         winnersInfoItemObj.GetComponent<WinnersInfoItem>().Show();
-        winnersInfoItemObj.transform.SetParent(winnersInfoItemParent);     
+        winnersInfoItemObj.transform.SetParent(winnersInfoItemParent);
+        winnersInfoItemObj.transform.SetAsFirstSibling();
     }
 
     public void CreateWinnerRecordNew(WinnersInfoItem item)

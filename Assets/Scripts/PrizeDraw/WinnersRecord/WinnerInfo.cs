@@ -8,9 +8,11 @@ public class WinnerInfo
 
     public int IsExcluded { get; set; }
 
+    public string Time { get; set; }
+
     public override string ToString()
     {
-        return string.Format("[User: Uid={0}, Prize={1}, IsExcluded={2}, ]", this.Uid, this.Prize, this.IsExcluded);
+        return string.Format("[User: Uid={0}, Prize={1}, IsExcluded={2}, Time={3} ]", this.Uid, this.Prize, this.IsExcluded,this.Time);
     }
 }
 

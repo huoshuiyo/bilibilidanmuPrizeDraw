@@ -10,6 +10,8 @@ public class PrizeDrawPanel : MonoBehaviour
     public Text countInPool;
     public Text prizeText;
 
+    public Text errorText;
+
     public InputField customInputField;
 
     [Header("奖池")]
@@ -166,10 +168,19 @@ public class PrizeDrawPanel : MonoBehaviour
 
     public void CloseChoujiangPanel()
     {
-        AddListOfWinner();
-        CreateThisRecord();
-        countPanel.GetComponent<CountPanel>().ResetCountPanel();
-        this.gameObject.SetActive(false);
+        try
+        {
+            AddListOfWinner();
+            CreateThisRecord();
+            winnerNotSure = new List<string>();
+            countPanel.GetComponent<CountPanel>().ResetCountPanel();
+            this.gameObject.SetActive(false);
+        }
+        catch (Exception e )
+        {
+            errorText.text = e.ToString();
+        }
+
     }
 
     public void AddListOfWinner() 
@@ -178,10 +189,11 @@ public class PrizeDrawPanel : MonoBehaviour
         {
             return;
         }
+        string Time = GetTimeStampMs().ToString();
         SqliteController.Instance.OpenSqlite();
         foreach (string winner in winnerNotSure) 
         {
-            SqliteController.Instance.InsertWinner(winner, ListOfUserController.controller.prize);
+            SqliteController.Instance.InsertWinner(winner, ListOfUserController.controller.prize, Time);
         }
         SqliteController.Instance.Release();
         if (ListOfUserController.controller.listOfWinnerExcluded.Count == 0)
@@ -208,6 +220,8 @@ public class PrizeDrawPanel : MonoBehaviour
                 ListOfUserController.controller.listOfWinnerExcluded.Add(winner);
             }
         }
+
+        
     }
 
     public void CreateThisRecord() 
@@ -228,5 +242,15 @@ public class PrizeDrawPanel : MonoBehaviour
     {
         countInPool.text = "当前奖池还有" + ListOfUserController.controller.listOfPrizePool.Count.ToString() + "人";
         prizeText.text = "奖品：" + ListOfUserController.controller.prize;
+    }
+
+    /// <summary>
+    /// 获取时间戳
+    /// </summary>
+    /// <returns></returns>
+    private double GetTimeStampMs()
+    {
+        double timeStamp = ((DateTime.Now.ToUniversalTime().Ticks - 621355968000000000) / 10000) * 0.001;
+        return timeStamp;
     }
 }

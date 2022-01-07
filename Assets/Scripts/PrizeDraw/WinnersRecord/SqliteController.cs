@@ -35,24 +35,24 @@ public class SqliteController
     //    InitSqliteController();
     //}
 
-    public void Test()
-    {
-        //测试数据
-        //Test test = new Test()
-        //{
-        //    id = "001",
-        //    username = "hello"
-        //};
-        //CreateDataTable<Test>();
-        //DeleteTabelAllData<Test>();
-        //InsertData(test);
-        //Debug.Log("Count:" + GetDataCount<Test>());
-        //Debug.Log("Data:" + SelectData<Test>(t => t.id == "001"));
-        //test.username = "hi";
-        //InserDataIfNotExists(test, t => t.id == test.id, true);
-        //Debug.Log("Count:" + GetDataCount<Test>());
-        //Debug.Log("Data:" + SelectData<Test>(t => t.id == "001"));
-    }
+    //public void Test()
+    //{
+    //    //测试数据
+    //    //Test test = new Test()
+    //    //{
+    //    //    id = "001",
+    //    //    username = "hello"
+    //    //};
+    //    //CreateDataTable<Test>();
+    //    //DeleteTabelAllData<Test>();
+    //    //InsertData(test);
+    //    //Debug.Log("Count:" + GetDataCount<Test>());
+    //    //Debug.Log("Data:" + SelectData<Test>(t => t.id == "001"));
+    //    //test.username = "hi";
+    //    //InserDataIfNotExists(test, t => t.id == test.id, true);
+    //    //Debug.Log("Count:" + GetDataCount<Test>());
+    //    //Debug.Log("Data:" + SelectData<Test>(t => t.id == "001"));
+    //}
 
     #region 初始化
     public void OpenSqlite()
@@ -92,13 +92,16 @@ public class SqliteController
 
 		var dbPath = filepath;
 #endif
+#if UNITY_STANDALONE_WIN
+        dbPath = string.Format(Application.streamingAssetsPath + "/{0}", dataBaseFileName);
+#endif
         sqliteConnection = new SQLiteConnection(dbPath);
         Debug.Log("Final PATH: " + dbPath);
     }
 
-    #endregion
+#endregion
 
-    #region 数据库操作
+#region 数据库操作
 
     public void UpdateWinnerExcluded()
     {
@@ -109,11 +112,11 @@ public class SqliteController
         }
     }
 
-    public void InsertWinner(string Uid, string Prize)
+    public void InsertWinner(string Uid, string Prize, string Time)
     {
         if (sqliteConnection != null)
         {
-            string sql = string.Format("INSERT INTO WinnerInfo Values(\"{0}\",\"{1}\",{2})", Uid, Prize, 1);
+            string sql = string.Format("INSERT INTO WinnerInfo Values(\"{0}\",\"{1}\",{2},\"{3}\")", Uid, Prize, 1, Time);
             SQLiteCommand sQLiteCommand = sqliteConnection.CreateCommand(sql);
             sQLiteCommand.ExecuteNonQuery();
         }
@@ -302,5 +305,5 @@ public class SqliteController
     {
         sqliteConnection.Dispose();
     }
-    #endregion
+#endregion
 }
