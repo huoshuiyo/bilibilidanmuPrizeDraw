@@ -58,9 +58,10 @@ public class CountPanel : MonoBehaviour
         {
             fansLevelText.gameObject.SetActive(true);
             fansLevelText.text = "粉丝牌等级>="+ ListOfUserController.controller.fansMedalLevel;
-        }       
+        }
+        ListOfUserController.controller.danmuHS = new Hashtable();
         ListOfUserController.controller.listOfUser = new List<string>();
-        Danmu.isBegin = true;
+        Danmu.isPrizeDrawBegin = true;
 
     }
 
@@ -72,7 +73,7 @@ public class CountPanel : MonoBehaviour
         prizeDrawBotton.SetActive(true);
         settingBotton.SetActive(true);
         fansLevelText.gameObject.SetActive(false);
-        Danmu.isBegin = false;
+        Danmu.isPrizeDrawBegin = false;
     }
 
     public void OpenChouJiangPanel() 

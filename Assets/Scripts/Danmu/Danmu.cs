@@ -12,7 +12,7 @@ public class Danmu : MonoBehaviour
 {
     public Live live;
 
-    public static bool isBegin = false;
+    public static bool isPrizeDrawBegin = false;
 
     #region DanmuCreate
 
@@ -29,31 +29,26 @@ public class Danmu : MonoBehaviour
 
     public void CreateDanmu(Danmaku danmaku)
     {
-        if (isBegin)
-        {
-            DanmuDrawPrizeBeginToCount(danmaku);
-        }
+        if (isPrizeDrawBegin) DanmuDrawPrizeBeginToCount(danmaku);
 
         GameObject bulletChatObj;
 
         if (danmuArray[danmuCount] != null)
         {
-            bulletChatObj = danmuArray[danmuCount];       
+            bulletChatObj = danmuArray[danmuCount];
         }
         else
         {
             bulletChatObj = Instantiate(userItem);
         }
 
-        
+
         bulletChatObj.GetComponent<Content>().imgAddress = danmaku.imgAddress;
         bulletChatObj.GetComponent<Content>().username = danmaku.name;
         bulletChatObj.GetComponent<Content>().content = danmaku.text;
         bulletChatObj.GetComponent<Content>().usernameShadow.effectColor = RandomColor();
 
         bulletChatObj.GetComponent<Content>().PlayCloseLater(30f);
-
-
 
         bulletChatObj.transform.SetParent(parent);
         danmuArray[danmuCount] = bulletChatObj;
@@ -71,53 +66,58 @@ public class Danmu : MonoBehaviour
     /// 开启弹幕抽奖
     /// </summary>
     /// <param name="danmaku"></param>
-    public void DanmuDrawPrizeBeginToCount(Danmaku danmaku) 
+    public void DanmuDrawPrizeBeginToCount(Danmaku danmaku)
     {
-        if (danmaku.text == ListOfUserController.controller.order)
+        if (danmaku.text != ListOfUserController.controller.order) return;
+
+        if (ListOfUserController.controller.fansMedalLevel != "")
         {
-            if (ListOfUserController.controller.fansMedalLevel != "")
+            if (int.Parse(ListOfUserController.controller.fansMedalLevel) > 0)
             {
-                if (int.Parse(ListOfUserController.controller.fansMedalLevel) > 0)
-                {
-                    if (danmaku.MedalName != ListOfUserController.controller.fansMedal) return;
-                    if (danmaku.MedalLv < int.Parse(ListOfUserController.controller.fansMedalLevel)) return;
-                }
+                if (danmaku.MedalName != ListOfUserController.controller.fansMedal) return;
+                if (danmaku.MedalLv < int.Parse(ListOfUserController.controller.fansMedalLevel)) return;
             }
-
-            foreach (var ID in ListOfUserController.controller.listOfUser)
-            {
-                if (danmaku.name == ID) return;
-            }
-            ListOfUserController.controller.AddListOfUser(danmaku.name);
-
-            GameObject enterThePrizeDrawObj;
-            if (danmuDrawPrizeArray[danmuDrawPrizeCount] != null)
-            {
-                enterThePrizeDrawObj = danmuDrawPrizeArray[danmuDrawPrizeCount];
-            }
-            else
-            {
-                enterThePrizeDrawObj = Instantiate(userItem);
-            }
-
-             
-            enterThePrizeDrawObj.GetComponent<Content>().imgAddress = danmaku.imgAddress;
-            enterThePrizeDrawObj.GetComponent<Content>().username = danmaku.name;
-            enterThePrizeDrawObj.GetComponent<Content>().content = "参与了抽奖";
-            enterThePrizeDrawObj.GetComponent<Content>().usernameShadow.effectColor = RandomColor();
-
-            enterThePrizeDrawObj.GetComponent<Content>().PlayCloseLater(20f);
-
-            enterThePrizeDrawObj.transform.SetParent(enterThePrizeDrawParent);
-            danmuDrawPrizeArray[danmuDrawPrizeCount] = enterThePrizeDrawObj;
-            danmuDrawPrizeCount = danmuDrawPrizeCount + 1;
-            if (danmuDrawPrizeCount > 7)
-            {
-                danmuDrawPrizeCount = 0;
-            }
-
-            enterThePrizeDrawObj.transform.SetAsLastSibling();
         }
+
+        if (ListOfUserController.controller.danmuHS.Contains(danmaku.name)) return;
+
+        //foreach (var ID in ListOfUserController.controller.listOfUser)
+        //{
+        //    if (danmaku.name == ID) return;
+        //}
+
+        ListOfUserController.controller.danmuHS.Add(danmaku.name, 1);
+
+        ListOfUserController.controller.AddListOfUser(danmaku.name);
+
+        GameObject enterThePrizeDrawObj;
+        if (danmuDrawPrizeArray[danmuDrawPrizeCount] != null)
+        {
+            enterThePrizeDrawObj = danmuDrawPrizeArray[danmuDrawPrizeCount];
+        }
+        else
+        {
+            enterThePrizeDrawObj = Instantiate(userItem);
+        }
+
+
+        enterThePrizeDrawObj.GetComponent<Content>().imgAddress = danmaku.imgAddress;
+        enterThePrizeDrawObj.GetComponent<Content>().username = danmaku.name;
+        enterThePrizeDrawObj.GetComponent<Content>().content = "参与了抽奖";
+        enterThePrizeDrawObj.GetComponent<Content>().usernameShadow.effectColor = RandomColor();
+
+        enterThePrizeDrawObj.GetComponent<Content>().PlayCloseLater(20f);
+
+        enterThePrizeDrawObj.transform.SetParent(enterThePrizeDrawParent);
+        danmuDrawPrizeArray[danmuDrawPrizeCount] = enterThePrizeDrawObj;
+        danmuDrawPrizeCount = danmuDrawPrizeCount + 1;
+        if (danmuDrawPrizeCount > 7)
+        {
+            danmuDrawPrizeCount = 0;
+        }
+
+        enterThePrizeDrawObj.transform.SetAsLastSibling();
+
     }
 
 
@@ -153,7 +153,7 @@ public class Danmu : MonoBehaviour
             {
                 giftObj = Instantiate(giftItem);
             }
-             
+
             giftObj.GetComponent<UserGift>().username = gift.UserName;
             giftObj.GetComponent<UserGift>().gift = gift.GiftName;
             giftObj.GetComponent<UserGift>().count = "X" + gift.GiftCount;

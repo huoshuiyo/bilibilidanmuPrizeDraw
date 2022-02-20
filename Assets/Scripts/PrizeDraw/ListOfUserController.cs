@@ -13,6 +13,7 @@ public class ListOfUserController : MonoBehaviour
     }
     #endregion
 
+    public Hashtable danmuHS = new Hashtable();
     public List<string> listOfUser = new List<string>();
     public List<string> listOfPrizePool = new List<string>();
     public List<string> listOfWinnerExcluded = new List<string>();
