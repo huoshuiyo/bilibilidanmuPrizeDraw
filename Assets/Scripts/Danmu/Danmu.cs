@@ -161,7 +161,7 @@ public class Danmu : MonoBehaviour
             giftObj.transform.SetParent(goldGiftParent);
             goldGiftArray[goldGiftCount] = giftObj;
             goldGiftCount = goldGiftCount + 1;
-            if (goldGiftCount > 8)
+            if (goldGiftCount > 9)
             {
                 goldGiftCount = 0;
             }
@@ -185,7 +185,7 @@ public class Danmu : MonoBehaviour
             giftObj.transform.SetParent(freeGiftParent);
             freeGiftArray[freeGiftCount] = giftObj;
             freeGiftCount = freeGiftCount + 1;
-            if (freeGiftCount > 3)
+            if (freeGiftCount > 5)
             {
                 freeGiftCount = 0;
             }
@@ -214,7 +214,7 @@ public class Danmu : MonoBehaviour
         guardObj.transform.SetParent(guardParent);
         guardArray[guardCount] = guardObj;
         guardCount = guardCount + 1;
-        if (guardCount > 3)
+        if (guardCount > 6)
         {
             guardCount = 0;
         }
