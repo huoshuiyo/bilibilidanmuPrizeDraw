@@ -17454,7 +17454,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.015563965, y: 0.49286}
+  m_AnchoredPosition: {x: 0.015563965, y: 0.4928589}
   m_SizeDelta: {x: 0.03100586, y: 0.90301514}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &725179041
@@ -18463,6 +18463,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   danmuCount: 0
   danmuDrawPrizeArray:
   - {fileID: 0}
@@ -18492,12 +18495,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   freeGiftArray:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   goldGiftArray:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

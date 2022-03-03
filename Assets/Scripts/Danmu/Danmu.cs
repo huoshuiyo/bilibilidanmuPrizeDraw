@@ -20,7 +20,7 @@ public class Danmu : MonoBehaviour
     public Transform parent;
     public Transform enterThePrizeDrawParent;
 
-    public GameObject[] danmuArray = new GameObject[14];
+    public GameObject[] danmuArray = new GameObject[17];
     public int danmuCount = 0;
 
     public GameObject[] danmuDrawPrizeArray = new GameObject[8];
@@ -53,7 +53,7 @@ public class Danmu : MonoBehaviour
         bulletChatObj.transform.SetParent(parent);
         danmuArray[danmuCount] = bulletChatObj;
         danmuCount = danmuCount + 1;
-        if (danmuCount > 13)
+        if (danmuCount > 16)
         {
             danmuCount = 0;
         }
@@ -131,9 +131,9 @@ public class Danmu : MonoBehaviour
     public Transform goldGiftParent;
     public Transform freeGiftParent;
 
-    public GameObject[] guardArray = new GameObject[4];
-    public GameObject[] freeGiftArray = new GameObject[4];
-    public GameObject[] goldGiftArray = new GameObject[9];
+    public GameObject[] guardArray = new GameObject[7];
+    public GameObject[] freeGiftArray = new GameObject[6];
+    public GameObject[] goldGiftArray = new GameObject[10];
 
 
     public int guardCount = 0;
