@@ -37,7 +37,7 @@ public class Live : MonoBehaviour
             imgdic = new Dictionary<int, string>();
             await client.ConnectAsync(roomID);
             client.ReceivedMessageHandlerEvt += Client_ReceivedMessageHandlerEvt;
-            client.ReceivedPopularityEvt += Client_ReceivedPopularityEvt;
+            //client.ReceivedPopularityEvt += Client_ReceivedPopularityEvt;
             await Task.Delay(-1);
         }
         catch (Exception e)
@@ -52,7 +52,7 @@ public class Live : MonoBehaviour
     private Task Client_ReceivedPopularityEvt(IDanmakuClient client, ReceivedPopularityEventArgs e)
     {
         //Debug.Log("当前直播间人气数：" + e.Popularity);
-        ListOfUserController.controller.SetPopularity(e.Popularity.ToString());
+        //ListOfUserController.controller.SetPopularity(e.Popularity.ToString());
         return Task.CompletedTask;
     }
     #endregion
@@ -63,7 +63,7 @@ public class Live : MonoBehaviour
         try
         {
             string m = e.Message.ToString();
-            //Debug.Log(m);
+            Debug.Log(m);
             JObject obj = (JObject)JsonConvert.DeserializeObject(m);
             string type = obj["cmd"].ToString();
             switch (type)
@@ -77,6 +77,17 @@ public class Live : MonoBehaviour
                     //Debug.Log("进入提示"+ msg_type + "：" + name + "： " +obj.ToString());
                     break;
                 #endregion
+                #region 进入直播间
+                case "WATCHED_CHANGE":
+
+                    int num = obj["data"]["num"].ToObject<int>();
+                    //string text_small = obj["data"]["uname"].ToString();
+                    //byte msg_type = obj["data"]["msg_type"].ToObject<byte>();
+                    ListOfUserController.controller.SetPopularity(num.ToString());
+                    //Debug.Log(num+"人看过");
+                    break;
+                #endregion
+
                 #region 弹幕
                 case "DANMU_MSG":
                     uint userId = obj["info"][2][0].ToObject<uint>();
@@ -148,9 +159,9 @@ public class Live : MonoBehaviour
                     string giftName = obj["data"]["giftName"].ToString();
                     uint giftCount = obj["data"]["num"].ToObject<uint>();
                     string coinType = obj["data"]["coin_type"].ToString();
-                    Debug.Log(string.Format("[礼物信息]赠送者:{0}，礼物名：{1} {2}个，" +
-                        "方式：{3}，价值：{4}，类型：{5}", userName, giftName,
-                        giftCount, action, totalPrice, coinType));
+                    //Debug.Log(string.Format("[礼物信息]赠送者:{0}，礼物名：{1} {2}个，" +
+                    //    "方式：{3}，价值：{4}，类型：{5}", userName, giftName,
+                    //    giftCount, action, totalPrice, coinType));
 
                     GiftQueue.Enqueue(new Gift
                     {

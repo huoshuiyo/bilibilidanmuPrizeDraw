@@ -51,7 +51,7 @@ public class MainPanel : MonoBehaviour
 
     private void Update()
     {
-        popularityText.text = "人气：" + ListOfUserController.controller.popularity;
+        popularityText.text = ListOfUserController.controller.popularity+"人看过";
     }
 
 }
