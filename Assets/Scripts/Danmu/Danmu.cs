@@ -111,7 +111,7 @@ public class Danmu : MonoBehaviour
         enterThePrizeDrawObj.transform.SetParent(enterThePrizeDrawParent);
         danmuDrawPrizeArray[danmuDrawPrizeCount] = enterThePrizeDrawObj;
         danmuDrawPrizeCount = danmuDrawPrizeCount + 1;
-        if (danmuDrawPrizeCount > 7)
+        if (danmuDrawPrizeCount > 9)
         {
             danmuDrawPrizeCount = 0;
         }
@@ -233,6 +233,22 @@ public class Danmu : MonoBehaviour
         return color;
     }
 
+    public void SetClose()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            try
+            {
+                Content content = danmuDrawPrizeArray[i].GetComponent<Content>();
+                content.PlayClose();
+            }
+            catch (Exception)
+            {
+                throw;
+            }      
+        }
+
+    }
 
     private void Update()
     {

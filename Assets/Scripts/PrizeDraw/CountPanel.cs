@@ -21,6 +21,8 @@ public class CountPanel : MonoBehaviour
 
     public GameObject joinParent;
 
+    public Danmu danmu;
+
     private void Start()
     {
         ResetCountPanel();
@@ -54,6 +56,7 @@ public class CountPanel : MonoBehaviour
         prizeDrawBotton.SetActive(false);
         countText.gameObject.SetActive(true);
         settingBotton.SetActive(false);
+        danmu.SetClose();
         if (int.Parse(ListOfUserController.controller.fansMedalLevel)>0)
         {
             fansLevelText.gameObject.SetActive(true);
@@ -78,6 +81,7 @@ public class CountPanel : MonoBehaviour
 
     public void OpenChouJiangPanel() 
     {
+        danmu.SetClose();
         prizeDrawPanel.SetActive(true);
         ListOfUserController.controller.ResetListOfPrizePool();
         prizeDrawPanel.GetComponent<PrizeDrawPanel>().DeleteUserInWinner();
@@ -96,6 +100,7 @@ public class CountPanel : MonoBehaviour
     public void CloseCountPanel() 
     {
         this.gameObject.SetActive(false);
+        danmu.SetClose();
     }
 
 
