@@ -47756,7 +47756,7 @@ MonoBehaviour:
   settingPanel: {fileID: 1048128604}
   winnerRecordPanel: {fileID: 515999412}
   joinParent: {fileID: 495143591}
-  danmu: {fileID: 0}
+  danmu: {fileID: 781583840}
 --- !u!1 &1335078358
 GameObject:
   m_ObjectHideFlags: 0
