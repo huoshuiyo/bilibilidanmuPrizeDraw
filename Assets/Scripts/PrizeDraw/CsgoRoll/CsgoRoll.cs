@@ -47,7 +47,7 @@ public class CsgoRoll : MonoBehaviour
     {
         for (int i = 0; i < itemArray.Length; i++)
         {
-            string user = ListOfUserController.controller.listOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
+            string user = ListOfUserController.controller.listOfPrizePool.OrderBy(s => UnityEngine.Random.Range(0, 100)).First();
             itemArray[i].userName.text = user;
         }
     }

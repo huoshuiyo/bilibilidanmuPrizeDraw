@@ -23,9 +23,19 @@ public class Danmu : MonoBehaviour
     public GameObject[] danmuArray = new GameObject[17];
     public int danmuCount = 0;
 
-    public GameObject[] danmuDrawPrizeArray = new GameObject[8];
+    public GameObject[] danmuDrawPrizeArray = new GameObject[10];
     public int danmuDrawPrizeCount = 0;
 
+    private void Start()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject gameObjectDraw = Instantiate(userItem);
+            gameObjectDraw.transform.SetParent(enterThePrizeDrawParent);
+            gameObjectDraw.GetComponent<Content>().PlayClose();
+            danmuDrawPrizeArray[i] = gameObjectDraw;
+        }
+    }
 
     public void CreateDanmu(Danmaku danmaku)
     {
@@ -41,7 +51,6 @@ public class Danmu : MonoBehaviour
         {
             bulletChatObj = Instantiate(userItem);
         }
-
 
         bulletChatObj.GetComponent<Content>().imgAddress = danmaku.imgAddress;
         bulletChatObj.GetComponent<Content>().username = danmaku.name;
@@ -59,7 +68,6 @@ public class Danmu : MonoBehaviour
         }
 
         bulletChatObj.transform.SetAsLastSibling();
-
     }
 
     /// <summary>
@@ -69,7 +77,6 @@ public class Danmu : MonoBehaviour
     public void DanmuDrawPrizeBeginToCount(Danmaku danmaku)
     {
         if (danmaku.text != ListOfUserController.controller.order) return;
-
         if (ListOfUserController.controller.fansMedalLevel != "")
         {
             if (int.Parse(ListOfUserController.controller.fansMedalLevel) > 0)

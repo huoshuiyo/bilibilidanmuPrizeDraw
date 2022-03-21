@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,12 +26,13 @@ public class CountPanel : MonoBehaviour
 
     public Danmu danmu;
 
+
     private void Start()
     {
         ResetCountPanel();
         WinnerInfoController.controller.ProcessingWinnerData();
     }
-    public void ResetCountPanel() 
+    public void ResetCountPanel()
     {
         beginCountBotton.SetActive(true);
         endCountBotton.SetActive(false);
@@ -37,32 +41,41 @@ public class CountPanel : MonoBehaviour
         settingBotton.SetActive(true);
         fansLevelText.gameObject.SetActive(false);
 
-        int childCount = joinParent.transform.childCount;
-        if (childCount>0)
+        for (int i = 0; i < 10; i++)
         {
-            for (int i = 0; i < childCount; i++)
+            try
             {
-                Destroy(joinParent.transform.GetChild(0).gameObject);
+                danmu.danmuDrawPrizeArray[i].GetComponent<Content>().PlayClose();
+            }
+            catch (System.Exception)
+            {
+                throw;
             }
         }
-
-
     }
 
-    public void BeginToCount() 
+
+
+
+
+    public void BeginToCount()
     {
+
         beginCountBotton.SetActive(false);
         endCountBotton.SetActive(true);
         prizeDrawBotton.SetActive(false);
         countText.gameObject.SetActive(true);
         settingBotton.SetActive(false);
 
-
-        if (int.Parse(ListOfUserController.controller.fansMedalLevel)>0)
+        if (!string.IsNullOrEmpty(ListOfUserController.controller.fansMedalLevel))
         {
-            fansLevelText.gameObject.SetActive(true);
-            fansLevelText.text = "粉丝牌等级>="+ ListOfUserController.controller.fansMedalLevel;
+            if (int.Parse(ListOfUserController.controller.fansMedalLevel) > 0)
+            {
+                fansLevelText.gameObject.SetActive(true);
+                fansLevelText.text = "粉丝牌等级>=" + ListOfUserController.controller.fansMedalLevel;
+            }
         }
+
         ListOfUserController.controller.danmuHS = new Hashtable();
         ListOfUserController.controller.listOfUser = new List<string>();
         Danmu.isPrizeDrawBegin = true;
@@ -80,7 +93,7 @@ public class CountPanel : MonoBehaviour
         Danmu.isPrizeDrawBegin = false;
     }
 
-    public void OpenChouJiangPanel() 
+    public void OpenChouJiangPanel()
     {
 
         prizeDrawPanel.SetActive(true);
@@ -98,7 +111,7 @@ public class CountPanel : MonoBehaviour
         settingPanel.SetActive(true);
     }
 
-    public void CloseCountPanel() 
+    public void CloseCountPanel()
     {
         this.gameObject.SetActive(false);
     }
@@ -107,7 +120,7 @@ public class CountPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        orderText.text = "抽奖口令："+ ListOfUserController.controller.order;
+        orderText.text = "抽奖口令：" + ListOfUserController.controller.order;
         countText.text = "现在已经有" + ListOfUserController.controller.listOfUser.Count.ToString() + "人参加了抽奖";
         prizeText.text = "奖品：" + ListOfUserController.controller.prize;
     }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,16 +17,16 @@ public class Pool : MonoBehaviour
     public Transform parent;
 
     [Header("名单列表")]
-    public List<GameObject> usersInPool=new List<GameObject>();
+    public List<GameObject> usersInPool = new List<GameObject>();
 
 
     // Update is called once per frame
     void Update()
     {
-        countInPool.text = "当前奖池还有"+ ListOfUserController.controller.listOfPrizePool.Count.ToString() + "人";
+        countInPool.text = "当前奖池还有" + ListOfUserController.controller.listOfPrizePool.Count.ToString() + "人";
     }
     //创造池
-    public void CreateUserInPool() 
+    public void CreateUserInPool()
     {
         //删除
         for (int i = 0; i < parent.transform.childCount; i++)
@@ -35,7 +36,7 @@ public class Pool : MonoBehaviour
         //创造
         usersInPool = new List<GameObject>();
         foreach (var user in ListOfUserController.controller.listOfPrizePool)
-        {         
+        {
             GameObject userInPoolObj = Instantiate(userInPool);
             usersInPool.Add(userInPoolObj);
             userInPoolObj.GetComponent<UserInPool>().SetUserName(user);
@@ -44,18 +45,20 @@ public class Pool : MonoBehaviour
     }
 
     //响指
+    System.Random random;
     public void XiangZhi()
     {
+        random = new System.Random((int)DateTime.Now.Ticks);
         int userInPoolCount = ListOfUserController.controller.listOfPrizePool.Count;
-        for(int i = 0;i < (userInPoolCount/2);i++) 
+        for (int i = 0; i < (userInPoolCount / 2); i++)
         {
             DeleteUserFromPool();
         }
     }
 
-    public void DeleteUserFromPool() 
+    public void DeleteUserFromPool()
     {
-        string loser = ListOfUserController.controller.listOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
+        string loser = ListOfUserController.controller.listOfPrizePool.OrderBy(s => random.Next(0, 100)).First();
         foreach (GameObject user in usersInPool)
         {
             string userName = user.GetComponent<UserInPool>().userName.text;
@@ -67,7 +70,7 @@ public class Pool : MonoBehaviour
             }
         }
         ListOfUserController.controller.RemoveListOfPrizePool(loser);
-        
+
     }
 
 

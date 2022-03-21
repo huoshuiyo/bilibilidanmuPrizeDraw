@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,19 +10,13 @@ public class PrizeDrawPanel : MonoBehaviour
 {
     public Text countInPool;
     public Text prizeText;
-
     public Text errorText;
-
     public InputField customInputField;
-
     [Header("奖池")]
     public GameObject poolPanel;
     public Pool pool;
-
     [Header("CSGORoll")]
     public GameObject cSGORollPanel;
-
- 
 
     [Header("名单预制物")]
     public GameObject userInWinner;
@@ -40,12 +35,12 @@ public class PrizeDrawPanel : MonoBehaviour
 
     public List<string> winnerNotSure = new List<string>();
 
-    public void OpenAnim() 
+    public void OpenAnim()
     {
         mainPanel.SetActive(false);
         countPanel.SetActive(false);
         mainCamera.SetActive(false);
-        
+
         prizeDrawAnimPanel.SetActive(true);
         prizeDrawAnim.SetActive(true);
         animCamera.SetActive(true);
@@ -59,9 +54,9 @@ public class PrizeDrawPanel : MonoBehaviour
         this.gameObject.SetActive(false);
 
     }
-
+    System.Random random;
     #region 抽奖
-    public void EnterPrizeDraw(int number) 
+    public void EnterPrizeDraw(int number)
     {
         if (ListOfUserController.controller.listOfPrizePool.Count <= 0)
         {
@@ -71,6 +66,7 @@ public class PrizeDrawPanel : MonoBehaviour
         {
             return;
         }
+        random = new System.Random((int)DateTime.Now.Ticks);
         if (number == 1)
         {
             SingleDraw();
@@ -81,6 +77,7 @@ public class PrizeDrawPanel : MonoBehaviour
         }
         OpenAnim();
     }
+
     //单抽
     public void SingleDraw()
     {
@@ -88,7 +85,10 @@ public class PrizeDrawPanel : MonoBehaviour
         {
             return;
         }
-        string winner = ListOfUserController.controller.listOfPrizePool.OrderBy(u => Guid.NewGuid()).First();
+
+
+        string winner = ListOfUserController.controller.listOfPrizePool.OrderBy(s => random.Next(0, 100)).First();
+
         ListOfUserController.controller.RemoveListOfPrizePool(winner);
         CreateUserInWinner(winner);
         ListOfUserController.controller.listOfWinnerAnim.Add(winner);
@@ -176,14 +176,14 @@ public class PrizeDrawPanel : MonoBehaviour
             countPanel.GetComponent<CountPanel>().ResetCountPanel();
             this.gameObject.SetActive(false);
         }
-        catch (Exception e )
+        catch (Exception e)
         {
             errorText.text = e.ToString();
         }
 
     }
 
-    public void AddListOfWinner() 
+    public void AddListOfWinner()
     {
         if (winnerNotSure.Count == 0)
         {
@@ -191,7 +191,7 @@ public class PrizeDrawPanel : MonoBehaviour
         }
         string Time = GetTimeStampMs().ToString();
         SqliteController.Instance.OpenSqlite();
-        foreach (string winner in winnerNotSure) 
+        foreach (string winner in winnerNotSure)
         {
             SqliteController.Instance.InsertWinner(winner, ListOfUserController.controller.prize, Time);
         }
@@ -221,10 +221,10 @@ public class PrizeDrawPanel : MonoBehaviour
             }
         }
 
-        
+
     }
 
-    public void CreateThisRecord() 
+    public void CreateThisRecord()
     {
         if (winnerNotSure.Count == 0)
         {
