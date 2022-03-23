@@ -63,7 +63,7 @@ public class Live : MonoBehaviour
         try
         {
             string m = e.Message.ToString();
-            Debug.Log(m);
+            //Debug.Log(m);
             JObject obj = (JObject)JsonConvert.DeserializeObject(m);
             string type = obj["cmd"].ToString();
             switch (type)
@@ -107,9 +107,9 @@ public class Live : MonoBehaviour
 
 
 
-                    //Debug.Log(string.Format("[弹幕{6}]{0}：{1}   [舰长等级:{2}，勋章名:{7},勋章等级:{3}，UL:{4}，?:{5}]", userName, content, guardLv, medelLv, ulLv, color, userId, medelName));
+                    Debug.Log(string.Format("[弹幕{6}]{0}：{1}   [舰长等级:{2}，勋章名:{7},勋章等级:{3}，UL:{4}，?:{5}]", userName, content, guardLv, medelLv, ulLv, color, userId, medelName));
 
-                  
+
                     string imgAddress = "";
                     //爬头像未解决 问题:请求过多会被B站Ban了                
                     //try

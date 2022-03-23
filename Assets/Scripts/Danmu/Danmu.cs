@@ -16,6 +16,7 @@ public class Danmu : MonoBehaviour
 
     #region DanmuCreate
 
+    public GameObject newUserItem;
     public GameObject userItem;
     public Transform parent;
     public Transform enterThePrizeDrawParent;
@@ -49,20 +50,23 @@ public class Danmu : MonoBehaviour
         }
         else
         {
-            bulletChatObj = Instantiate(userItem);
+            bulletChatObj = Instantiate(newUserItem);
         }
 
-        bulletChatObj.GetComponent<Content>().imgAddress = danmaku.imgAddress;
-        bulletChatObj.GetComponent<Content>().username = danmaku.name;
-        bulletChatObj.GetComponent<Content>().content = danmaku.text;
-        bulletChatObj.GetComponent<Content>().usernameShadow.effectColor = RandomColor();
-
-        bulletChatObj.GetComponent<Content>().PlayCloseLater(30f);
+        bulletChatObj.GetComponent<newContent>().imgAddress = danmaku.imgAddress;
+        bulletChatObj.GetComponent<newContent>().username = danmaku.name;
+        bulletChatObj.GetComponent<newContent>().content = danmaku.text;
+        bulletChatObj.GetComponent<newContent>()._MedalName = danmaku.MedalName;
+        bulletChatObj.GetComponent<newContent>()._MedalLV = danmaku.MedalLv.ToString();
+        bulletChatObj.GetComponent<newContent>()._GuardLv = danmaku.GuardLv;
+        bulletChatObj.GetComponent<newContent>().usernameShadow.effectColor = RandomColor();
+        bulletChatObj.GetComponent<newContent>().ReStart();
+        bulletChatObj.GetComponent<newContent>().PlayCloseLater(30f);
 
         bulletChatObj.transform.SetParent(parent);
         danmuArray[danmuCount] = bulletChatObj;
         danmuCount = danmuCount + 1;
-        if (danmuCount > 16)
+        if (danmuCount > danmuArray.Length-1)
         {
             danmuCount = 0;
         }

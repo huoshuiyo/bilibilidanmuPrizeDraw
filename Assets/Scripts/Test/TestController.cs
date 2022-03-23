@@ -13,26 +13,14 @@ public class TestController : MonoBehaviour
     {
         string  name = "";
         danmuCount = int.Parse(InputField.text);
-        //switch ((Random.Range(0, 3)))
-        //{
-        //    case 0:
-        //        name = "JasonXuDeveloper";
-        //        break;
-        //    case 1:
-        //        name = "XuDevelopJason";
-        //        break;
-        //    case 2:
-        //        name = "XuDevelopJason";
-        //        break;
-        //    default:
-        //        break;
-        //}
+
+
         for (int i = 0; i < danmuCount; i++)
         {
             live.DanmakuQueue.Enqueue(new Danmaku
             {
                 name ="火水" + i,
-                text = "test",
+                text = "test一二三四一二三四一二三四一二三四一二三四一二三四",
                 userID = (uint)i,
                 GuardLv = (byte)1,
                 color = "1",
