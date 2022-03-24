@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -37,16 +38,30 @@ public class newContent : MonoBehaviour
     }
     private void Update()
     {
-       
+
     }
 
     public void ReStart()
     {
+
         _username.text = username;
         _content.text = "\n" + content;
         _GuardImg.enabled = false;
         if (_GuardLv > 0)
         {
+            Debug.Log(_GuardLv);
+            switch (_GuardLv)
+            {
+                case 1:
+                    _GuardImg.color = new Color(241 / 255f, 236 / 255f, 88 / 255f);
+                    break;
+                case 2:
+                    _GuardImg.color = new Color(203 / 255f, 119 / 255f, 255 / 255f);
+                    break;
+                case 3:
+                    _GuardImg.color = new Color(17 / 255f, 175 / 255f, 243 / 255f, 163 / 255f);
+                    break;
+            }
             _GuardImg.enabled = true;
         }
 

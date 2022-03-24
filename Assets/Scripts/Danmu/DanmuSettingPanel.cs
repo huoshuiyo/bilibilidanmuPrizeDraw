@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,41 @@ public class DanmuSettingPanel : MonoBehaviour
 
     public InputField danmuLevelInput;
 
+    public GameObject openEButton;
+    public GameObject openLvButton;
+    public GameObject closeEButton;
+    public GameObject closeLvButton;
+
+    public GameObject eButton;
+    public GameObject lvMu;
+
+    public void OpenE()
+    {
+        openEButton.SetActive(false);
+        closeEButton.SetActive(true);
+        eButton.SetActive(true);
+    }
+
+    public void CloseE()
+    {
+        openEButton.SetActive(true);
+        closeEButton.SetActive(false);
+        eButton.SetActive(false);
+    }
+
+    public void OpenLv()
+    {
+        openLvButton.SetActive(false);
+        closeLvButton.SetActive(true);
+        lvMu.SetActive(true);
+    }
+    public void CloseLv()
+    {
+        openLvButton.SetActive(true);
+        closeLvButton.SetActive(false);
+        lvMu.SetActive(false);
+    }
+
     private void Start()
     {
         if (PlayerPrefs.HasKey("DanmuLevelInput"))
@@ -26,9 +62,9 @@ public class DanmuSettingPanel : MonoBehaviour
             danmuLevelInput.text = "0";
         }
     }
-    public void FinishSetting() 
+    public void FinishSetting()
     {
-        
+
         if (danmuLevelInput.text == "")
         {
             Debug.Log("请输入弹幕限制等级");
@@ -40,7 +76,7 @@ public class DanmuSettingPanel : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void GiftShowControl() 
+    public void GiftShowControl()
     {
         if (guardGiftToggle.isOn)
         {
@@ -67,6 +103,8 @@ public class DanmuSettingPanel : MonoBehaviour
             freeGiftPart.SetActive(false);
         }
     }
+
+
 
 
 }

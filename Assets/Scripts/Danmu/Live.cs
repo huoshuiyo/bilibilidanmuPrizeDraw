@@ -106,8 +106,11 @@ public class Live : MonoBehaviour
                     }
 
 
+                    if (guardLv>0)
+                    {
+                        Debug.Log(string.Format("[弹幕{6}]{0}：{1}   [舰长等级:{2}，勋章名:{7},勋章等级:{3}，UL:{4}，?:{5}]", userName, content, guardLv, medelLv, ulLv, color, userId, medelName));
+                    }
 
-                    Debug.Log(string.Format("[弹幕{6}]{0}：{1}   [舰长等级:{2}，勋章名:{7},勋章等级:{3}，UL:{4}，?:{5}]", userName, content, guardLv, medelLv, ulLv, color, userId, medelName));
 
 
                     string imgAddress = "";
