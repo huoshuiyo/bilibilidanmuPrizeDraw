@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+
+using SatorImaging.AppWindowUtility;
 
 using UnityEngine;
 using UnityEngine.UI;
@@ -24,6 +27,25 @@ public class DanmuSettingPanel : MonoBehaviour
     public GameObject eButton;
     public GameObject lvMu;
 
+    public Text errorText;
+
+    public void ChangeView(int a)
+    {
+        switch (a)
+        {
+            case 0:
+                Screen.SetResolution(500, 750, false);
+                break;
+            case 1:
+                Screen.SetResolution(200, 750, false);
+                break;
+            default:
+                Screen.SetResolution(1200, 750, false);
+                break;
+        }
+
+    }
+
     public void OpenE()
     {
         openEButton.SetActive(false);
@@ -40,15 +62,26 @@ public class DanmuSettingPanel : MonoBehaviour
 
     public void OpenLv()
     {
+#if UNITY_STANDALONE_WIN
+        AppWindowUtility.Transparent = true;
+        AppWindowUtility.AlwaysOnTop = true;
+#endif
+
         openLvButton.SetActive(false);
         closeLvButton.SetActive(true);
-        lvMu.SetActive(true);
+        lvMu.SetActive(false);
+
     }
     public void CloseLv()
     {
+#if UNITY_STANDALONE_WIN
+        AppWindowUtility.Transparent = false;
+        AppWindowUtility.AlwaysOnTop = false;
+#endif
         openLvButton.SetActive(true);
         closeLvButton.SetActive(false);
-        lvMu.SetActive(false);
+        lvMu.SetActive(true);
+
     }
 
     private void Start()

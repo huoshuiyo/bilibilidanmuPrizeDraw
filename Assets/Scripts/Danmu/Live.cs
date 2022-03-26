@@ -23,7 +23,7 @@ public class Live : MonoBehaviour
     [Header("接收弹幕的最低UL等级")]
     public static int danmakuMinULLevel = 0;
 
-
+    public Text errorText;
     async void Start()
     {
         if (roomID<=0)
@@ -44,6 +44,7 @@ public class Live : MonoBehaviour
         {
  
             Debug.Log(e.ToString());
+            errorText.text =    e.ToString();
         }
 
     }
