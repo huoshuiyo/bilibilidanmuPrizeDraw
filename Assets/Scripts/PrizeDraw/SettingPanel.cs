@@ -11,6 +11,8 @@ public class SettingPanel : MonoBehaviour
     public InputField fansMedalInput;
     public InputField fansMedalLevelInput;
 
+    public Dropdown guardDropdown;
+
     public Text winnerCount;
 
     public Toggle isOpenWinnerExcluded;
@@ -44,16 +46,18 @@ public class SettingPanel : MonoBehaviour
             {
                 isOpenWinnerExcluded.isOn = false;
             }
-
         }
+
+        guardDropdown.value = PlayerPrefs.GetInt("GuardLevel", 0);
     }
     public void FinishSetting() 
     {
         SetOrder();
         SetPrize();
-        FansMedal();
-        FansMedalLevel();
+        SetFansMedal();
+        SetFansMedalLevel();
         SetIsWinnerExcluded();
+        GuardLevel();
         this.gameObject.SetActive(false);
     }
 
@@ -73,16 +77,22 @@ public class SettingPanel : MonoBehaviour
         ListOfUserController.controller.SetPrize(prizeInput.text);
         PlayerPrefs.SetString("Prize", prizeInput.text);
     }
-    public void FansMedal()
+    public void SetFansMedal()
     {
         ListOfUserController.controller.SetFansMedal(fansMedalInput.text);
         PlayerPrefs.SetString("FansMedal", fansMedalInput.text);
     }
 
-    public void FansMedalLevel()
+    public void SetFansMedalLevel()
     {
         ListOfUserController.controller.SetFansMedalLevel(fansMedalLevelInput.text);
         PlayerPrefs.SetString("FansMedalLevel", fansMedalLevelInput.text);
+    }
+
+    public void GuardLevel()
+    {
+        ListOfUserController.controller.SetGuardLevel(guardDropdown.value);
+        PlayerPrefs.SetInt("GuardLevel", guardDropdown.value);
     }
 
     public void ResetListOfWinner() 

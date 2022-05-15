@@ -12,6 +12,7 @@ public class CountPanel : MonoBehaviour
     public Text prizeText;
     public Text countText;
     public Text fansLevelText;
+    public Text guardLevelText;
 
     public GameObject beginCountBotton;
     public GameObject endCountBotton;
@@ -40,7 +41,7 @@ public class CountPanel : MonoBehaviour
         countText.gameObject.SetActive(false);
         settingBotton.SetActive(true);
         fansLevelText.gameObject.SetActive(false);
-
+        guardLevelText.gameObject.SetActive(false);
         for (int i = 0; i < 10; i++)
         {
             try
@@ -75,6 +76,26 @@ public class CountPanel : MonoBehaviour
                 fansLevelText.text = "粉丝牌等级>=" + ListOfUserController.controller.fansMedalLevel;
             }
         }
+        if (ListOfUserController.controller.guardLevel>0)
+        {
+            guardLevelText.gameObject.SetActive(true);
+            switch (ListOfUserController.controller.guardLevel) 
+            {
+                case 1:
+                    guardLevelText.text = "大航海等级>=总督";
+                    break;
+                case 2:
+                    guardLevelText.text = "大航海等级>=提督";
+                    break;
+                case 3:
+                    guardLevelText.text = "大航海等级>=舰长";
+                    break;
+                default:
+                    guardLevelText.gameObject.SetActive(false);
+                    break;
+
+            }
+        }
 
         ListOfUserController.controller.danmuHS = new Hashtable();
         ListOfUserController.controller.listOfUser = new List<string>();
@@ -90,6 +111,7 @@ public class CountPanel : MonoBehaviour
         prizeDrawBotton.SetActive(true);
         settingBotton.SetActive(true);
         fansLevelText.gameObject.SetActive(false);
+        guardLevelText.gameObject.SetActive(false);
         Danmu.isPrizeDrawBegin = false;
     }
 

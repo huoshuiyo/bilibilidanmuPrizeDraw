@@ -25,6 +25,7 @@ public class ListOfUserController : MonoBehaviour
     public string order = "";
     public string fansMedal = "";
     public string fansMedalLevel = "";
+    public int guardLevel = 0;
 
     public bool isWinnerExcluded = false;
 
@@ -46,6 +47,7 @@ public class ListOfUserController : MonoBehaviour
         {
             fansMedalLevel = PlayerPrefs.GetString("FansMedalLevel");
         }
+        guardLevel = PlayerPrefs.GetInt("GuardLevel", 0);
     }
 
     public void AddListOfUser(string username)
@@ -77,7 +79,11 @@ public class ListOfUserController : MonoBehaviour
     public void SetFansMedalLevel(string fansMedalLevel)
     {
         this.fansMedalLevel = fansMedalLevel;
+    }
 
+    public void SetGuardLevel(int GuardLevel)
+    {
+        this.guardLevel = GuardLevel;
     }
 
     public void ResetListOfUser()

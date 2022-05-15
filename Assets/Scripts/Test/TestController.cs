@@ -9,6 +9,7 @@ public class TestController : MonoBehaviour
     public InputField InputField;
     public Live live;
     public string testString;
+    public int guardLevel;
 
     public void AddDanmu() 
     {
@@ -23,7 +24,7 @@ public class TestController : MonoBehaviour
                 name ="火水" + i,
                 text = testString,
                 userID = (uint)i,
-                GuardLv = (byte)1,
+                GuardLv = (byte)guardLevel,
                 color = "1",
                 MedalLv = 1,
                 ULLv = 1,

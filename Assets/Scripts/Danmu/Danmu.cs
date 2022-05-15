@@ -89,7 +89,22 @@ public class Danmu : MonoBehaviour
                 if (danmaku.MedalLv < int.Parse(ListOfUserController.controller.fansMedalLevel)) return;
             }
         }
-
+        if (ListOfUserController.controller.guardLevel != 0)
+        {
+            if (ListOfUserController.controller.guardLevel == 1)
+            {
+                if (danmaku.GuardLv != 1) return;
+            }
+            if (ListOfUserController.controller.guardLevel == 2)
+            {
+                if (danmaku.GuardLv == 0) return;
+                if (danmaku.GuardLv > 2) return;
+            }
+            if (ListOfUserController.controller.guardLevel == 3)
+            {
+                if (danmaku.GuardLv == 0) return;
+            }
+        }
         if (ListOfUserController.controller.danmuHS.Contains(danmaku.name)) return;
 
         //foreach (var ID in ListOfUserController.controller.listOfUser)
