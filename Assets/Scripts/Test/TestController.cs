@@ -8,6 +8,7 @@ public class TestController : MonoBehaviour
     public int danmuCount;
     public InputField InputField;
     public Live live;
+    public string testString;
 
     public void AddDanmu() 
     {
@@ -20,7 +21,7 @@ public class TestController : MonoBehaviour
             live.DanmakuQueue.Enqueue(new Danmaku
             {
                 name ="火水" + i,
-                text = "test一二三四一二三四一二三四一二三四一二三四一二三四",
+                text = testString,
                 userID = (uint)i,
                 GuardLv = (byte)1,
                 color = "1",

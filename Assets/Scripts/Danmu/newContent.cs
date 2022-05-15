@@ -49,7 +49,7 @@ public class newContent : MonoBehaviour
         _GuardImg.enabled = false;
         if (_GuardLv > 0)
         {
-            Debug.Log(_GuardLv);
+            //Debug.Log(_GuardLv);
             switch (_GuardLv)
             {
                 case 1:

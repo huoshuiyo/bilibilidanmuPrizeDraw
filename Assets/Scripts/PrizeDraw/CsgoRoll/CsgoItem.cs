@@ -6,4 +6,7 @@ using UnityEngine.UI;
 public class CsgoItem : MonoBehaviour
 {
     public Text userName;
+
+    public AudioSource audioSource;
+
 }

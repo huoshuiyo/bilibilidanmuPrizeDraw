@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 81a2deed40eec7e439303a4dedd14fec
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: zihun144hao-langyuanti
+  fontNames:
+  - zihun144hao-langyuanti
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: b689e77c752c4ce40b15fb9d042f52d7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
