@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class EButton : MonoBehaviour
 {
-    public GameObject EPanel;
+    public CanvasGroup EPanelCanvasGroup;
 
     public void OpenEPanel() 
     {
-        EPanel.SetActive(true);
+        EPanelCanvasGroup.alpha = 1;
+        EPanelCanvasGroup.blocksRaycasts = true;
+        EPanelCanvasGroup.interactable = true;
     }
 
     public void CloseEPanel()
     {
-        EPanel.SetActive(false);
+        EPanelCanvasGroup.alpha = 0;
+        EPanelCanvasGroup.blocksRaycasts = false;
+        EPanelCanvasGroup.interactable = false;
     }
 }
