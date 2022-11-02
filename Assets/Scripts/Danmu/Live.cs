@@ -12,6 +12,7 @@ using Newtonsoft.Json.Linq;
 public class Live : MonoBehaviour
 {
     public static int roomID = 0;
+
     public Queue<Danmaku> DanmakuQueue = new Queue<Danmaku>();
     public Queue<Gift> GiftQueue = new Queue<Gift>();
     public Queue<Guard> GuardQueue = new Queue<Guard>();
@@ -24,7 +25,9 @@ public class Live : MonoBehaviour
     public static int danmakuMinULLevel = 0;
 
     public Text errorText;
-    async void Start()
+
+
+    public async void Start()
     {
         if (roomID<=0)
         {
@@ -32,7 +35,6 @@ public class Live : MonoBehaviour
         }
         try
         {
-            
             TcpDanmakuClientV2 client = new TcpDanmakuClientV2();
             imgdic = new Dictionary<int, string>();
             await client.ConnectAsync(roomID);
@@ -46,8 +48,9 @@ public class Live : MonoBehaviour
             Debug.Log(e.ToString());
             errorText.text =    e.ToString();
         }
-
     }
+
+
 
     #region ÈËÆø
     private Task Client_ReceivedPopularityEvt(IDanmakuClient client, ReceivedPopularityEventArgs e)

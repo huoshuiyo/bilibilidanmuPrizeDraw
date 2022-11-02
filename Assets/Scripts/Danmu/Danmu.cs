@@ -52,16 +52,16 @@ public class Danmu : MonoBehaviour
         {
             bulletChatObj = Instantiate(newUserItem);
         }
-
-        bulletChatObj.GetComponent<newContent>().imgAddress = danmaku.imgAddress;
-        bulletChatObj.GetComponent<newContent>().username = danmaku.name;
-        bulletChatObj.GetComponent<newContent>().content = danmaku.text;
-        bulletChatObj.GetComponent<newContent>()._MedalName = danmaku.MedalName;
-        bulletChatObj.GetComponent<newContent>()._MedalLV = danmaku.MedalLv.ToString();
-        bulletChatObj.GetComponent<newContent>()._GuardLv = danmaku.GuardLv;
-        bulletChatObj.GetComponent<newContent>().usernameShadow.effectColor = RandomColor();
-        bulletChatObj.GetComponent<newContent>().ReStart();
-        bulletChatObj.GetComponent<newContent>().PlayCloseLater(30f);
+        NewContent newContent = bulletChatObj.GetComponent<NewContent>();
+        newContent.imgAddress = danmaku.imgAddress;
+        newContent.username = danmaku.name;
+        newContent.content = danmaku.text;
+        newContent._MedalName = danmaku.MedalName;
+        newContent._MedalLV = danmaku.MedalLv.ToString();
+        newContent._GuardLv = danmaku.GuardLv;
+        newContent.usernameShadow.effectColor = RandomColor();
+        newContent.ReStart();
+        newContent.PlayCloseLater(30f);
 
         bulletChatObj.transform.SetParent(parent);
         danmuArray[danmuCount] = bulletChatObj;
@@ -126,13 +126,13 @@ public class Danmu : MonoBehaviour
             enterThePrizeDrawObj = Instantiate(userItem);
         }
 
+        Content content = enterThePrizeDrawObj.GetComponent<Content>();
+        content.imgAddress = danmaku.imgAddress;
+        content.username = danmaku.name;
+        content.content = "参与了抽奖";
+        content.usernameShadow.effectColor = RandomColor();
 
-        enterThePrizeDrawObj.GetComponent<Content>().imgAddress = danmaku.imgAddress;
-        enterThePrizeDrawObj.GetComponent<Content>().username = danmaku.name;
-        enterThePrizeDrawObj.GetComponent<Content>().content = "参与了抽奖";
-        enterThePrizeDrawObj.GetComponent<Content>().usernameShadow.effectColor = RandomColor();
-
-        enterThePrizeDrawObj.GetComponent<Content>().PlayCloseLater(20f);
+        content.PlayCloseLater(20f);
 
         enterThePrizeDrawObj.transform.SetParent(enterThePrizeDrawParent);
         danmuDrawPrizeArray[danmuDrawPrizeCount] = enterThePrizeDrawObj;

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class newContent : MonoBehaviour
+public class NewContent : MonoBehaviour
 {
     public string username = "";
     public string content = "";
