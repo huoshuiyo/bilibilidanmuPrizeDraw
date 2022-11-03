@@ -26,31 +26,76 @@ public class Live : MonoBehaviour
 
     public Text errorText;
 
+    TcpDanmakuClientV2 client;
+    List<TcpDanmakuClientV2> clients = new List<TcpDanmakuClientV2>();
 
-    public async void Start()
+    public  float UILockTime = 5f;
+
+    public void ReConnectToDanmu() 
     {
-        if (roomID<=0)
+        if (UILockTime>0)
+        {
+            return;
+        }
+        UILockTime = 5f;
+        Start();
+
+    }
+
+    async void Start()
+    {
+        if (roomID <= 0)
         {
             return;
         }
         try
         {
-            TcpDanmakuClientV2 client = new TcpDanmakuClientV2();
+
             imgdic = new Dictionary<int, string>();
+            try
+            {
+                foreach (var client in clients) 
+                {
+                    client.ReceivedMessageHandlerEvt -= Client_ReceivedMessageHandlerEvt;
+                }
+
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
+            client = new TcpDanmakuClientV2();
+            clients.Add(client);
             await client.ConnectAsync(roomID);
+
             client.ReceivedMessageHandlerEvt += Client_ReceivedMessageHandlerEvt;
             //client.ReceivedPopularityEvt += Client_ReceivedPopularityEvt;
             await Task.Delay(-1);
         }
         catch (Exception e)
         {
- 
+
             Debug.Log(e.ToString());
-            errorText.text =    e.ToString();
+            errorText.text = e.ToString();
         }
     }
 
+    private void Update()
+    {
+        UILockTime -= Time.deltaTime;
+    }
 
+    private void OnDestroy()
+    {
+        try
+        {
+            client.ReceivedMessageHandlerEvt -= Client_ReceivedMessageHandlerEvt;
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+    }
 
     #region 人气
     private Task Client_ReceivedPopularityEvt(IDanmakuClient client, ReceivedPopularityEventArgs e)
@@ -74,7 +119,7 @@ public class Live : MonoBehaviour
             {
                 #region 进入直播间
                 case "INTERACT_WORD":
-                    
+
                     int id = obj["data"]["uid"].ToObject<int>();
                     string name = obj["data"]["uname"].ToString();
                     byte msg_type = obj["data"]["msg_type"].ToObject<byte>();
@@ -110,7 +155,7 @@ public class Live : MonoBehaviour
                     }
 
 
-                    if (guardLv>0)
+                    if (guardLv > 0)
                     {
                         Debug.Log(string.Format("[弹幕{6}]{0}：{1}   [舰长等级:{2}，勋章名:{7},勋章等级:{3}，UL:{4}，?:{5}]", userName, content, guardLv, medelLv, ulLv, color, userId, medelName));
                     }

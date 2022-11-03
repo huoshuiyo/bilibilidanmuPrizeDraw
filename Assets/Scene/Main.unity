@@ -32781,6 +32781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorText: {fileID: 1968778751}
+  UILockTime: 5
 --- !u!114 &781583842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94254,8 +94255,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: BackToBegin
+      - m_Target: {fileID: 781583841}
+        m_MethodName: ReConnectToDanmu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -94278,12 +94279,12 @@ GameObject:
   - component: {fileID: 6489519640969740920}
   - component: {fileID: 6489519640969740923}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: ReConnectButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &6489519641601544144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94417,7 +94418,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u8FD4\u56DE"
+  m_Text: "\u91CD\u8FDE"
 --- !u!1 &6489519641967815787
 GameObject:
   m_ObjectHideFlags: 0
