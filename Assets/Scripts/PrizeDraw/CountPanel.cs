@@ -16,7 +16,7 @@ public class CountPanel : MonoBehaviour
 
     public GameObject beginCountBotton;
     public GameObject endCountBotton;
-    public GameObject prizeDrawBotton;
+    //public GameObject prizeDrawBotton;
     public GameObject settingBotton;
 
     public GameObject prizeDrawPanel;
@@ -37,7 +37,7 @@ public class CountPanel : MonoBehaviour
     {
         beginCountBotton.SetActive(true);
         endCountBotton.SetActive(false);
-        prizeDrawBotton.SetActive(false);
+        //prizeDrawBotton.SetActive(false);
         countText.gameObject.SetActive(false);
         settingBotton.SetActive(true);
         fansLevelText.gameObject.SetActive(false);
@@ -64,7 +64,7 @@ public class CountPanel : MonoBehaviour
 
         beginCountBotton.SetActive(false);
         endCountBotton.SetActive(true);
-        prizeDrawBotton.SetActive(false);
+        //prizeDrawBotton.SetActive(false);
         countText.gameObject.SetActive(true);
         settingBotton.SetActive(false);
 
@@ -106,13 +106,15 @@ public class CountPanel : MonoBehaviour
     //结束统计
     public void EndToCount()
     {
-        beginCountBotton.SetActive(true);
-        endCountBotton.SetActive(false);
-        prizeDrawBotton.SetActive(true);
+ 
+        //prizeDrawBotton.SetActive(true);
         settingBotton.SetActive(true);
         fansLevelText.gameObject.SetActive(false);
         guardLevelText.gameObject.SetActive(false);
         Danmu.isPrizeDrawBegin = false;
+        OpenChouJiangPanel();
+        beginCountBotton.SetActive(true);
+        endCountBotton.SetActive(false);
     }
 
     public void OpenChouJiangPanel()

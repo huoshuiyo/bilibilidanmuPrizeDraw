@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4660946, g: 0.4657923, b: 0.46188927, a: 1}
+  m_IndirectSpecularColor: {r: 0.46613693, g: 0.46583545, b: 0.46192914, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -59941,7 +59941,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1334432372
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60025,7 +60025,6 @@ MonoBehaviour:
   guardLevelText: {fileID: 179245683}
   beginCountBotton: {fileID: 7496210160547653336}
   endCountBotton: {fileID: 1572979807}
-  prizeDrawBotton: {fileID: 6709825313205127198}
   settingBotton: {fileID: 7886230776742822579}
   prizeDrawPanel: {fileID: 114839806}
   settingPanel: {fileID: 1048128604}
@@ -94665,7 +94664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &6709825313205127199
 MonoBehaviour:
   m_ObjectHideFlags: 0
