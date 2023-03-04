@@ -7,7 +7,7 @@ public class Danmaku
 {
     public string name;
     public string text;
-    public uint userID;
+    public Int64 userID;
     public byte GuardLv;
     public string MedalName;
     public int MedalLv;
@@ -19,7 +19,7 @@ public class Danmaku
 
 public class Gift
 {
-    public uint UserID;
+    public Int64 UserID;
     public string UserName;
     public uint TotalPrice;
     public string Action;
@@ -31,7 +31,7 @@ public class Gift
 public class Guard
 {
     public string userName;
-    public uint userID;
+    public Int64 userID;
     public int GuardLevel;
     public int count;
     public string GuardName;
@@ -41,7 +41,7 @@ public class SuperChat
 {
     public uint ScID;
     public string userName;
-    public uint UserID;
+    public Int64 UserID;
     public int GuardLevel;
     public int price;
     public string Message;

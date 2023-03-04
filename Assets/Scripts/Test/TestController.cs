@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +24,7 @@ public class TestController : MonoBehaviour
             {
                 name ="火水" + i,
                 text = testString,
-                userID = (uint)i,
+                userID = (Int64)i,
                 GuardLv = (byte)guardLevel,
                 color = "1",
                 MedalLv = 1,
