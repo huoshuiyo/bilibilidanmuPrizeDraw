@@ -21,25 +21,24 @@ public class Live : MonoBehaviour
     public Dictionary<int, string> imgdic;
 
     HttpRequestHelp h = new HttpRequestHelp();
-    [Header("½ÓÊÕµ¯Ä»µÄ×îµÍULµÈ¼¶")]
-    public static int danmakuMinULLevel = 0;
+    [Header("danmakuMinULLevel")] public static int danmakuMinULLevel = 0;
 
     public Text errorText;
 
     TcpDanmakuClientV2 client;
     List<TcpDanmakuClientV2> clients = new List<TcpDanmakuClientV2>();
 
-    public  float UILockTime = 5f;
+    public float UILockTime = 5f;
 
-    public void ReConnectToDanmu() 
+    public void ReConnectToDanmu()
     {
-        if (UILockTime>0)
+        if (UILockTime > 0)
         {
             return;
         }
+
         UILockTime = 5f;
         Start();
-
     }
 
     async void Start()
@@ -48,22 +47,22 @@ public class Live : MonoBehaviour
         {
             return;
         }
+
         try
         {
-
             imgdic = new Dictionary<int, string>();
             try
             {
-                foreach (var client in clients) 
+                foreach (var client in clients)
                 {
                     client.ReceivedMessageHandlerEvt -= Client_ReceivedMessageHandlerEvt;
                 }
-
             }
             catch (Exception e)
             {
                 Debug.Log(e);
             }
+
             client = new TcpDanmakuClientV2();
             clients.Add(client);
             await client.ConnectAsync(roomID);
@@ -74,7 +73,6 @@ public class Live : MonoBehaviour
         }
         catch (Exception e)
         {
-
             Debug.Log(e.ToString());
             errorText.text = e.ToString();
         }
@@ -98,12 +96,14 @@ public class Live : MonoBehaviour
     }
 
     #region ÈËÆø
+
     private Task Client_ReceivedPopularityEvt(IDanmakuClient client, ReceivedPopularityEventArgs e)
     {
         //Debug.Log("µ±Ç°Ö±²¥¼äÈËÆøÊý£º" + e.Popularity);
         //ListOfUserController.controller.SetPopularity(e.Popularity.ToString());
         return Task.CompletedTask;
     }
+
     #endregion
 
 
@@ -117,16 +117,20 @@ public class Live : MonoBehaviour
             string type = obj["cmd"].ToString();
             switch (type)
             {
-                #region ½øÈëÖ±²¥¼ä
+                #region INTERACT_WORD
+
                 case "INTERACT_WORD":
 
-                    int id = obj["data"]["uid"].ToObject<int>();
+                    Int64 id = obj["data"]["uid"].ToObject<Int64>();
                     string name = obj["data"]["uname"].ToString();
                     byte msg_type = obj["data"]["msg_type"].ToObject<byte>();
-                    //Debug.Log("½øÈëÌáÊ¾"+ msg_type + "£º" + name + "£º " +obj.ToString());
+                    //Debug.Log("msg_type"+ msg_type + "name" + name + "obj.ToString()" +obj.ToString());
                     break;
+
                 #endregion
-                #region ½øÈëÖ±²¥¼ä
+
+                #region WATCHED_CHANGE
+
                 case "WATCHED_CHANGE":
 
                     int num = obj["data"]["num"].ToObject<int>();
@@ -135,9 +139,11 @@ public class Live : MonoBehaviour
                     ListOfUserController.controller.SetPopularity(num.ToString());
                     //Debug.Log(num+"ÈË¿´¹ý");
                     break;
+
                 #endregion
 
-                #region µ¯Ä»
+                #region DANMU_MSG
+
                 case "DANMU_MSG":
                     Int64 userId = obj["info"][2][0].ToObject<Int64>();
                     string userName = obj["info"][2][1].ToString();
@@ -157,9 +163,10 @@ public class Live : MonoBehaviour
 
                     if (guardLv > 0)
                     {
-                        Debug.Log(string.Format("[µ¯Ä»{6}]{0}£º{1}   [½¢³¤µÈ¼¶:{2}£¬Ñ«ÕÂÃû:{7},Ñ«ÕÂµÈ¼¶:{3}£¬UL:{4}£¬?:{5}]", userName, content, guardLv, medelLv, ulLv, color, userId, medelName));
+                        Debug.Log(string.Format(
+                            "[userId{6}]{0} content:{1}   [guardLv:{2} medelName:{7}, medelLv:{3} ulLv:{4} color:{5}]",
+                            userName, content, guardLv, medelLv, ulLv, color, userId, medelName));
                     }
-
 
 
                     string imgAddress = "";
@@ -201,8 +208,11 @@ public class Live : MonoBehaviour
                             imgAddress = imgAddress,
                         });
                     break;
+
                 #endregion
-                #region ÀñÎï
+
+                #region SEND_GIFT
+
                 case "SEND_GIFT":
                     userId = obj["data"]["uid"].ToObject<Int64>();
                     userName = obj["data"]["uname"].ToString();
@@ -221,14 +231,17 @@ public class Live : MonoBehaviour
                         GiftName = giftName,
                         GiftCount = giftCount,
                         TotalPrice = totalPrice,
-                        UserID = (Int64)userId,
+                        UserID = userId,
                         UserName = userName,
                         CoinType = coinType
                     });
                     break;
+
                 #endregion
-                #region ½¢³¤
-                case "USER_TOAST_MSG"://½¢³¤
+
+                #region USER_TOAST_MSG
+
+                case "USER_TOAST_MSG": //½¢³¤
                     userId = obj["data"]["uid"].ToObject<Int64>();
                     userName = obj["data"]["username"].ToString();
                     giftName = obj["data"]["role_name"].ToString();
@@ -248,9 +261,12 @@ public class Live : MonoBehaviour
                         Price = price
                     });
                     break;
+
                 #endregion
-                #region ³¬¼¶ÁôÑÔ
-                case "SUPER_CHAT_MESSAGE"://SuperChat
+
+                #region SUPER_CHAT_MESSAGE
+
+                case "SUPER_CHAT_MESSAGE": //SuperChat
                     uint SCID = obj["data"]["id"].ToObject<uint>();
                     userId = obj["data"]["uid"].ToObject<Int64>();
                     price = obj["data"]["price"].ToObject<uint>();
@@ -268,26 +284,29 @@ public class Live : MonoBehaviour
                         userName = userName
                     });
                     break;
+
                 #endregion
-                #region ÆäËû
-                case "ONLINE_RANK_V2"://¸ßÄÜ°ñ
+
+                #region OTHER
+
+                case "ONLINE_RANK_V2": //¸ßÄÜ°ñ
                     break;
-                case "ROOM_BLOCK_MSG"://ºÚÃûµ¥
+                case "ROOM_BLOCK_MSG": //ºÚÃûµ¥
                     break;
-                case "ROOM_REAL_TIME_MESSAGE_UPDATE"://·ÛË¿Êý¸üÐÂ
+                case "ROOM_REAL_TIME_MESSAGE_UPDATE": //·ÛË¿Êý¸üÐÂ
                     uint fans = obj["data"]["fans"].ToObject<uint>();
                     Debug.Log(string.Format("[·ÛË¿Êý·¢Éú±ä»¯]£º{0}", fans));
                     break;
-                    #endregion
 
+                #endregion
             }
-
         }
         catch (Exception ex)
         {
             Debug.LogError(ex.ToString());
             return Task.CompletedTask;
         }
+
         return Task.CompletedTask;
     }
 }
