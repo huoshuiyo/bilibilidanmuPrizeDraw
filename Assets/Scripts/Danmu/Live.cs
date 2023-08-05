@@ -137,7 +137,6 @@ public class Live : MonoBehaviour
                     //string text_small = obj["data"]["uname"].ToString();
                     //byte msg_type = obj["data"]["msg_type"].ToObject<byte>();
                     ListOfUserController.controller.SetPopularity(num.ToString());
-                    //Debug.Log(num+"ÈË¿´¹ý");
                     break;
 
                 #endregion
@@ -159,6 +158,19 @@ public class Live : MonoBehaviour
                         medelName = obj["info"][3][1].ToString();
                         medelLv = obj["info"][3][0].ToObject<byte>();
                     }
+                    
+                                                                     
+           
+                    if (userName.Length == 4)
+                    {
+                        // 判断后三个字符是否为***
+                        if (userName[1] == '*' && userName[2] == '*' && userName[3] == '*' )
+                        {
+                            Debug.LogError("chong lian");
+                            ReConnectToDanmu();
+                            return Task.CompletedTask;
+                        }
+                    }
 
 
                     if (guardLv > 0)
@@ -167,31 +179,10 @@ public class Live : MonoBehaviour
                             "[userId{6}]{0} content:{1}   [guardLv:{2} medelName:{7}, medelLv:{3} ulLv:{4} color:{5}]",
                             userName, content, guardLv, medelLv, ulLv, color, userId, medelName));
                     }
-
-
+                    
+                    
                     string imgAddress = "";
-                    //ÅÀÍ·ÏñÎ´½â¾ö ÎÊÌâ:ÇëÇó¹ý¶à»á±»BÕ¾BanÁË                
-                    //try
-                    //{
-                    //    HttpRequestHelp.userId = (int)userId;
-                    //    if (!imgdic.ContainsKey(HttpRequestHelp.userId))
-                    //    {
-                    //        string json = h.GetMsg();
-                    //        var obj2 = JObject.Parse(json);
-                    //        imgAddress = obj2["data"]["face"].ToString();
-                    //        Debug.Log(imgAddress);
-                    //        imgdic.Add(HttpRequestHelp.userId, imgAddress);
-                    //    }
-                    //    else
-                    //    {
-                    //        imgAddress = imgdic[HttpRequestHelp.userId];
-                    //    }
-                    //    Debug.Log(imgAddress);
-                    //}
-                    //catch (Exception)
-                    //{
-                    //    throw;
-                    //}
+
 
                     //Debug.Log(string.Format("{0},{1}", obj["info"][3][1].ToString(), obj["info"][3][0].ToObject<byte>()));
                     if (ulLv >= danmakuMinULLevel)
